@@ -50,7 +50,8 @@ class Home extends StatelessWidget {
     return SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            title: Text('Connection'),
+            title: Text('Connetion'),
+            title: Text('Conntion'),
           ),
           body: SelectBondedDevicePage(
             onCahtPage: (device1) {
