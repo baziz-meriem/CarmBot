@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:smart_botino/connection.dart';
-import 'package:smart_botino/led.dart';
+import 'package:smart_botino/Dashboard.dart';
+import 'package:smart_botino/car.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,16 +27,12 @@ class MyApp extends StatelessWidget {
               body: Container(
                 height: double.infinity,
                 child: Center(
-                  child: Icon(
-                    Icons.bluetooth_disabled,
-                    size: 200.0,
-                    color: Colors.red,
-                  ),
+                  child: Image(image:AssetImage('assets/note.png')),
                 ),
               ),
             );
           } else {
-            return Home();
+            return Dashboard();
           }
         },
         // child: MyHomePage(title: 'Flutter Demo Home Page'),
@@ -51,7 +48,7 @@ class Home extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             title: Text('Connetion'),
-            title: Text('Conntion'),
+
           ),
           body: SelectBondedDevicePage(
             onCahtPage: (device1) {
@@ -60,7 +57,7 @@ class Home extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return ChatPage(server: device);
+                    return Dashboard();
                   },
                 ),
               );

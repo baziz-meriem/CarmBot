@@ -266,7 +266,7 @@ class _ChatPage extends State<ChatPage> {
                 Container(
                   margin: const EdgeInsets.all(8.0),
                   child: IconButton(
-                      icon: const Icon(Icons.send),
+                      icon: const Icon(Icons.send_outlined),
                       onPressed: isConnected
                           ? () => _sendMessage(textEditingController.text)
                           : null),
