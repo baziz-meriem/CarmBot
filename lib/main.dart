@@ -4,12 +4,14 @@ import 'package:smart_botino/ChatPage.dart';
 import 'package:smart_botino/connection.dart';
 import 'package:smart_botino/Dashboard.dart';
 import 'package:smart_botino/car.dart';
+import 'package:smart_botino/device.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
       home: FutureBuilder(
         future: FlutterBluetoothSerial.instance.requestEnable(),
         builder: (context, future) {
-          if (future.connectionState == ConnectionState.waiting) {
+          if (future.connectionState == ConnectionState.waiting)  {
             return Scaffold(
               body: Container(
                 height: double.infinity,
@@ -32,8 +34,8 @@ class MyApp extends StatelessWidget {
                 ),
               ),
             );
-          } else {
-            return Dashboard();
+          } else   {
+            return Dashboard(FlutterBluetoothSerial.instance);
           }
         },
         // child: MyHomePage(title: 'Flutter Demo Home Page'),
@@ -45,11 +47,12 @@ class MyApp extends StatelessWidget {
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+
     return SafeArea(
         child: Scaffold(
           appBar: AppBar(
             title: Text('Connetion'),
-
           ),
           body: SelectBondedDevicePage(
             onCahtPage: (device1) {
