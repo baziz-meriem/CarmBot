@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
+import 'package:smart_botino/ChatPage.dart';
 import 'package:smart_botino/connection.dart';
 import 'package:smart_botino/Dashboard.dart';
 import 'package:smart_botino/car.dart';
@@ -57,7 +58,7 @@ class Home extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return Dashboard();
+                    return ChatPage(server: device);
                   },
                 ),
               );
