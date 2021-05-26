@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:smart_botino/ChatPage.dart';
+import 'package:smart_botino/car.dart';
 import 'package:smart_botino/connection.dart';
 import 'package:smart_botino/main.dart';
+
+import 'manual.dart';
 
 class Dashboard extends StatefulWidget {
 
@@ -34,9 +37,9 @@ class _DashboardState extends State<Dashboard> {
                       children: <Widget>[
                         IconButton(
                           icon: Icon(Icons.bluetooth,
-                              color: Colors.white, size: 52.0),
-                          iconSize: 50,
-                          tooltip: "meriem",
+                              color:  Color(0xfffd997a), size: 80.0),
+                          iconSize: 70,
+                          tooltip: "bluetooth",
                           splashColor: Color(0xff69f0ae),
                           onPressed: () {
                             Navigator.of(context).push(MaterialPageRoute(
@@ -45,10 +48,12 @@ class _DashboardState extends State<Dashboard> {
                         ),
                         IconButton(
                           icon: Icon(Icons.settings,
-                              color: Colors.white, size: 52.0),
-                          iconSize: 50,
+                              color: Color(0xfffca084), size: 75.0),
+                          iconSize: 70,
                           splashColor: Color(0xff69f0ae),
-                          onPressed: () {},
+                          tooltip: "settings",
+                          onPressed: () { Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => manual()));},
                         )
                       ],
                     ),
@@ -58,9 +63,9 @@ class _DashboardState extends State<Dashboard> {
                     child: Text(
                       "Welcome, Armbotino \nSelect an option",
                       style: TextStyle(
-                        fontFamily: 'DancingScript',
-                        color: Color(0xff061407),
-                        fontSize: 28.0,
+                        fontFamily: 'Pacifico-Regular',
+                        color: Color(0xfff8f4ae),
+                        fontSize: 35.0,
                         fontWeight: FontWeight.bold,
                       ),
                       textAlign: TextAlign.start,
@@ -72,17 +77,17 @@ class _DashboardState extends State<Dashboard> {
                       child: Wrap(spacing: 20, runSpacing: 20.0, children: <
                           Widget>[
                         SizedBox(
-                          width: 160.0,
-                          height: 160.0,
+                          width: 200.0,
+                          height: 200.0,
                           child: InkWell(
                             child: Container(
                               decoration: BoxDecoration(),
-                              height: 100,
-                              width: 100,
+                              height: 200,
+                              width: 200,
                               child: Card(
-                                shadowColor: Color(0xff69f0ae),
+                                shadowColor: Color(0xff14442c),
                                 color: Color.fromARGB(255, 255, 254, 255),
-                                elevation: 2.0,
+                                elevation: 100.0,
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(50.0)),
                                 child: Center(
@@ -116,8 +121,8 @@ class _DashboardState extends State<Dashboard> {
                                                     BorderRadius.circular(20.0),
                                                     child: Image.asset(
                                                         'assets/todo.png',
-                                                        width: 100.0,
-                                                        height: 75.0),
+                                                        width: 150.0,
+                                                        height: 100.0),
                                                   ),
                                                 ),
                                               )),
@@ -128,7 +133,7 @@ class _DashboardState extends State<Dashboard> {
                                             "Arm Control",
                                             style: TextStyle(
                                                 color: Colors.black,
-                                                fontFamily: 'DancingScript',
+                                                fontFamily: 'Pacifico-Regular',
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 20.0),
                                           ),
@@ -150,12 +155,12 @@ class _DashboardState extends State<Dashboard> {
                           ),
                         ),
                         SizedBox(
-                          width: 160.0,
-                          height: 160.0,
+                          width: 200.0,
+                          height: 200.0,
                           child: Card(
-                            shadowColor: Color(0xff69f0ae),
-                            color: Color.fromARGB(255, 252, 252, 252),
-                            elevation: 2.0,
+                            shadowColor: Color(0xff245e42),
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            elevation:100.0,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50.0)),
                             child: Center(
@@ -170,14 +175,14 @@ class _DashboardState extends State<Dashboard> {
                                               Navigator.of(context).push(
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          ChatPage(server: device)));
+                                                          car()));
                                             },
                                             child: Container(
                                               child: ClipRRect(
                                                 borderRadius:
                                                 BorderRadius.circular(20.0),
                                                 child: Image.asset('assets/note.png',
-                                                    width: 100.0, height: 75.0),
+                                                    width: 150.0, height: 100.0),
                                               ),
                                             ),
                                           )),
@@ -188,7 +193,7 @@ class _DashboardState extends State<Dashboard> {
                                         "Car control",
                                         style: TextStyle(
                                             color: Colors.black,
-                                            fontFamily: 'DancingScript',
+                                            fontFamily: 'Pacifico-Regular',
                                             fontWeight: FontWeight.bold,
                                             fontSize: 20.0),
                                       ),
