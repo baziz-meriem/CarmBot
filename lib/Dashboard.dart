@@ -5,8 +5,6 @@ import 'package:smart_botino/connection.dart';
 import 'package:smart_botino/main.dart';
 
 class Dashboard extends StatefulWidget {
-  var FlutterBluetoothSerial;
-  Dashboard(this.FlutterBluetoothSerial);
 
   @override
   _DashboardState createState() => _DashboardState();
@@ -21,7 +19,7 @@ class _DashboardState extends State<Dashboard> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image:
-                    AssetImage("assets/60ac66ae2cf6843b28687fc143861404.png"),
+                AssetImage("assets/60ac66ae2cf6843b28687fc143861404.png"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -89,68 +87,63 @@ class _DashboardState extends State<Dashboard> {
                                     borderRadius: BorderRadius.circular(50.0)),
                                 child: Center(
                                     child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: Column(
-                                    children: <Widget>[
-                                      Material(
-                                          child: InkWell(
-                                        onTap: () async {
-                                          await widget.FlutterBluetoothSerial
-                                                  .getBondedDevices()
-                                              .then((List<BluetoothDevice>
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Column(
+                                        children: <Widget>[
+                                          Material(
+                                              child: InkWell(
+                                                onTap: () async {
+                                                  await FlutterBluetoothSerial.instance
+                                                      .getBondedDevices()
+                                                      .then((List<BluetoothDevice>
                                                   bondedDevices) {
-                                            bondedDevices.forEach((element) {
-                                              if (element.address ==
-                                                  "98:D3:31:F4:1A:60") {
-                                                Navigator.of(context).push(
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            ChatPage(
-                                                              server: element,
-                                                            )));
-                                              } else {
-                                                Navigator.of(context).push(
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            Home()));
-                                              }
-                                            });
-                                          });
-                                        },
-                                        child: Container(
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(20.0),
-                                            child: Image.asset(
-                                                'assets/todo.png',
-                                                width: 100.0,
-                                                height: 75.0),
+                                                    bondedDevices.forEach((element) {
+                                                      if (element.address ==
+                                                          "98:D3:31:F4:1A:60") {
+                                                        Navigator.of(context).push(
+                                                            MaterialPageRoute(
+                                                                builder: (context) =>
+                                                                    ChatPage(
+                                                                      server: element,
+                                                                    )));
+                                                      }
+                                                    });
+                                                  });
+                                                },
+                                                child: Container(
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                    BorderRadius.circular(20.0),
+                                                    child: Image.asset(
+                                                        'assets/todo.png',
+                                                        width: 100.0,
+                                                        height: 75.0),
+                                                  ),
+                                                ),
+                                              )),
+                                          SizedBox(
+                                            height: 10.0,
                                           ),
-                                        ),
-                                      )),
-                                      SizedBox(
-                                        height: 10.0,
+                                          Text(
+                                            "Arm Control",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontFamily: 'DancingScript',
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20.0),
+                                          ),
+                                          SizedBox(
+                                            height: 5.0,
+                                          ),
+                                          Text(
+                                            "4 Axis",
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.w100),
+                                          )
+                                        ],
                                       ),
-                                      Text(
-                                        "Arm Control",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontFamily: 'DancingScript',
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 20.0),
-                                      ),
-                                      SizedBox(
-                                        height: 5.0,
-                                      ),
-                                      Text(
-                                        "4 Axis",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.w100),
-                                      )
-                                    ],
-                                  ),
-                                )),
+                                    )),
                               ),
                             ),
                             onTap: () {},
@@ -167,50 +160,50 @@ class _DashboardState extends State<Dashboard> {
                                 borderRadius: BorderRadius.circular(50.0)),
                             child: Center(
                                 child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Column(
-                                children: <Widget>[
-                                  Material(
-                                      child: InkWell(
-                                    onTap: () {
-                                      var device;
-                                      Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ChatPage(server: device)));
-                                    },
-                                    child: Container(
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(20.0),
-                                        child: Image.asset('assets/note.png',
-                                            width: 100.0, height: 75.0),
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Column(
+                                    children: <Widget>[
+                                      Material(
+                                          child: InkWell(
+                                            onTap: () {
+                                              var device;
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          ChatPage(server: device)));
+                                            },
+                                            child: Container(
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                BorderRadius.circular(20.0),
+                                                child: Image.asset('assets/note.png',
+                                                    width: 100.0, height: 75.0),
+                                              ),
+                                            ),
+                                          )),
+                                      SizedBox(
+                                        height: 10.0,
                                       ),
-                                    ),
-                                  )),
-                                  SizedBox(
-                                    height: 10.0,
+                                      Text(
+                                        "Car control",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontFamily: 'DancingScript',
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20.0),
+                                      ),
+                                      SizedBox(
+                                        height: 5.0,
+                                      ),
+                                      Text(
+                                        "2 motors",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w100),
+                                      )
+                                    ],
                                   ),
-                                  Text(
-                                    "Car control",
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontFamily: 'DancingScript',
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20.0),
-                                  ),
-                                  SizedBox(
-                                    height: 5.0,
-                                  ),
-                                  Text(
-                                    "2 motors",
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w100),
-                                  )
-                                ],
-                              ),
-                            )),
+                                )),
                           ),
                         ),
                         SizedBox(
