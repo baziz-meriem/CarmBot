@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
               ),
             );
           } else   {
-            return Dashboard(FlutterBluetoothSerial.instance);
+            return Dashboard();
           }
         },
         // child: MyHomePage(title: 'Flutter Demo Home Page'),
