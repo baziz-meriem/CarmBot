@@ -37,7 +37,7 @@ class _DashboardState extends State<Dashboard> {
                       children: <Widget>[
                         IconButton(
                           icon: Icon(Icons.bluetooth,
-                              color:  Color(0xfffd997a), size: 80.0),
+                              color:  Color(0xffffffff), size: 70.0),
                           iconSize: 70,
                           tooltip: "bluetooth",
                           splashColor: Color(0xff69f0ae),
@@ -48,7 +48,7 @@ class _DashboardState extends State<Dashboard> {
                         ),
                         IconButton(
                           icon: Icon(Icons.settings,
-                              color: Color(0xfffca084), size: 75.0),
+                              color: Color(0xffffffff), size: 70.0),
                           iconSize: 70,
                           splashColor: Color(0xff69f0ae),
                           tooltip: "settings",
@@ -64,7 +64,7 @@ class _DashboardState extends State<Dashboard> {
                       "Welcome, Armbotino \nSelect an option",
                       style: TextStyle(
                         fontFamily: 'Pacifico-Regular',
-                        color: Color(0xfff8f4ae),
+                        color: Color(0xff243933),
                         fontSize: 35.0,
                         fontWeight: FontWeight.bold,
                       ),

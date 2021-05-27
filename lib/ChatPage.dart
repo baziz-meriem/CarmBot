@@ -4,7 +4,10 @@ import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
+import 'package:smart_botino/Dashboard.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
+
+
 
 class ChatPage extends StatefulWidget {
   final BluetoothDevice server;
@@ -102,15 +105,53 @@ class _ChatPage extends State<ChatPage> {
       );
     }).toList();
 
-    return Scaffold(
-      appBar: AppBar(
-          title: (isConnecting
-              ? Text('Connecting chat to ' + widget.server.name + '...')
-              : isConnected
-              ? Text('servoControl ')
-              : Text('blue Connecting with ' + widget.server.name))),
-      body: SafeArea(
-        child: Column(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text('Arm Control'),
+            centerTitle: true,
+            //centerTitle: true,
+            leading: IconButton(
+              icon: Icon(Icons.home,size:40),
+              onPressed: () {Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => Dashboard()));},
+            ),
+            actions: [
+
+              IconButton(
+                icon: Icon(Icons.save_alt,size:40),
+                onPressed: () {},
+              )
+            ],
+            //backgroundColor: Colors.purple,
+            flexibleSpace: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.purple[300],Colors.green[200],Colors.blue[200],Colors.pink[400]],
+                  begin: Alignment.bottomRight,
+                  end: Alignment.topLeft,
+                ),
+              ),
+            ),
+            bottom: TabBar(
+              //isScrollable: true,
+              indicatorColor: Colors.white,
+              indicatorWeight: 5,
+              tabs: [
+
+                Tab(icon: Icon(Icons.play_arrow), text: 'RUN'),
+                Tab(icon: Icon(Icons.pause), text: 'STOP'),
+                Tab(icon: Icon(Icons.restart_alt), text: 'RESET'),
+              ],
+            ),
+            elevation: 20,
+            titleSpacing: 20,
+
+          ),
+        body:Container(child:Column(
           children: <Widget>[
             Container(
               margin: const EdgeInsets.only(top: 50),
@@ -121,9 +162,11 @@ class _ChatPage extends State<ChatPage> {
                 children: [
                   Text(
                     'Gripper servo',
+
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Pacifico-Regular',color: Color(
+                        0xffdb71ec),   fontSize: 20.0),
                   ),
                   SfSlider(
                     min: 0.0,
@@ -133,6 +176,7 @@ class _ChatPage extends State<ChatPage> {
                     stepSize: 30.0,
                     showTicks: true,
                     showLabels: true,
+
                     //showTooltip: true,
                     showDivisors: false,
                     minorTicksPerInterval: 1,
@@ -148,10 +192,11 @@ class _ChatPage extends State<ChatPage> {
                     },
                   ),
                   Text(
-                    'Swrist servo',
+                    'wrist servo1',
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Pacifico-Regular',color: Color(
+                        0xffdb71ec),   fontSize: 20.0),
                   ),
                   SfSlider(
                     min: 0.0,
@@ -176,10 +221,11 @@ class _ChatPage extends State<ChatPage> {
                     },
                   ),
                   Text(
-                    'Bwrist servo',
+                    'wrist servo2',
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Pacifico-Regular',color: Color(
+                        0xffdb71ec),   fontSize: 20.0),
                   ),
                   SfSlider(
                     min: 0.0,
@@ -207,7 +253,8 @@ class _ChatPage extends State<ChatPage> {
                     ' Base servo',
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Pacifico-Regular',color: Color(
+                        0xffdb71ec),   fontSize: 20.0),
                   ),
 
                   SfSlider(
@@ -245,38 +292,18 @@ class _ChatPage extends State<ChatPage> {
             ),
             Row(
               children: <Widget>[
-                Flexible(
-                  child: Container(
-                    margin: const EdgeInsets.only(left: 16.0),
-                    child: TextField(
-                      style: const TextStyle(fontSize: 15.0),
-                      controller: textEditingController,
-                      decoration: InputDecoration.collapsed(
-                        hintText: isConnecting
-                            ? 'Wait until connected...'
-                            : isConnected
-                            ? 'Type your command...'
-                            : 'blue got disconnected',
-                        hintStyle: const TextStyle(color: Colors.grey),
-                      ),
-                      enabled: isConnected,
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.all(8.0),
-                  child: IconButton(
-                      icon: const Icon(Icons.send_outlined),
-                      onPressed: isConnected
-                          ? () => _sendMessage(textEditingController.text)
-                          : null),
-                ),
+
+
               ],
             )
           ],
+        ),)  //body:
         ),
       ),
-    );
+
+
+      );
+
   }
 
   void _onDataReceived(Uint8List data) {

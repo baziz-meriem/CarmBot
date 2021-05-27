@@ -66,6 +66,11 @@ flutter:
     - family: Pacifico-Regular
       fonts:
         - asset: fonts/Pacifico-Regular.ttf
+    - family: Indie Flower
+      fonts:
+        - asset: fonts/IndieFlower-Regular.ttf
+
+
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

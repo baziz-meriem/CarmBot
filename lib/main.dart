@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
               body: Container(
                 height: double.infinity,
                 child: Center(
-                  child: Image(image:AssetImage('assets/note.png')),
+                  child: Image(image:AssetImage('assets/amira.jpeg')),
                 ),
               ),
             );
