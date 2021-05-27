@@ -115,7 +115,7 @@ class _ChatPage extends State<ChatPage> {
             centerTitle: true,
             //centerTitle: true,
             leading: IconButton(
-              icon: Icon(Icons.home,size:40),
+              icon: Icon(Icons.home,size:40,),
               onPressed: () {Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => Dashboard()));},
             ),
@@ -130,7 +130,7 @@ class _ChatPage extends State<ChatPage> {
             flexibleSpace: Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Colors.purple[300],Colors.green[200],Colors.blue[200],Colors.pink[400]],
+                  colors: [Colors.blue[200],Colors.pink[100],Colors.green[200]],
                   begin: Alignment.bottomRight,
                   end: Alignment.topLeft,
                 ),
@@ -142,9 +142,9 @@ class _ChatPage extends State<ChatPage> {
               indicatorWeight: 5,
               tabs: [
 
-                Tab(icon: Icon(Icons.play_arrow), text: 'RUN'),
-                Tab(icon: Icon(Icons.pause), text: 'STOP'),
-                Tab(icon: Icon(Icons.restart_alt), text: 'RESET'),
+                Tab(icon: InkWell(child: Icon(Icons.play_arrow),onTap:(){_sendMessage("RUN"+_value2.toString());},), text: 'RUN'),
+                Tab(icon: InkWell(child: Icon(Icons.pause),onTap:(){_sendMessage("STOP"+_value2.toString());},), text: 'STOP'),
+                Tab(icon: InkWell(child: Icon(Icons.restart_alt),onTap:(){_sendMessage("RESET"+_value2.toString());},), text: 'RESET'),
               ],
             ),
             elevation: 20,
@@ -166,120 +166,149 @@ class _ChatPage extends State<ChatPage> {
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Pacifico-Regular',color: Color(
-                        0xffdb71ec),   fontSize: 20.0),
+                        0xFF008eff),   fontSize: 20.0),
                   ),
-                  SfSlider(
-                    min: 0.0,
-                    max: 180.0,
-                    value: _value1,
-                    interval: 20,
-                    stepSize: 30.0,
-                    showTicks: true,
-                    showLabels: true,
 
-                    //showTooltip: true,
-                    showDivisors: false,
-                    minorTicksPerInterval: 1,
-                    onChanged: (dynamic value) {
-                      if (isConnected) {
-                        setState(() {
-                          _value1 = value;
-                        });
+                  SliderTheme(data: SliderThemeData(
+                      thumbColor: Colors.green,
+                      thumbShape: RoundSliderThumbShape(enabledThumbRadius: 70)),
+                    child: SfSlider(
 
-                        _sendMessage("s1"+_value1.toString());
+                      min: 0.0,
+                      max: 180.0,
+                      value: _value1,
+                      interval: 20,
+                      stepSize: 30.0,
+                      showTicks: true,
+                      showLabels: true,
 
-                      }
-                    },
+                      //showTooltip: true,
+                      showDivisors: false,
+                      activeColor: Color(0xFF64FFDA),
+                      inactiveColor: Color(0xFFff649f),
+                      minorTicksPerInterval: 1,
+                      onChanged: (dynamic value) {
+                        if (isConnected) {
+                          setState(() {
+                            _value1 = value;
+                          });
+
+                          _sendMessage("s1"+_value1.toString());
+
+                        }
+                      },
+                    ),
                   ),
                   Text(
                     'wrist servo1',
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Pacifico-Regular',color: Color(
-                        0xffdb71ec),   fontSize: 20.0),
+                        0xFF008eff),   fontSize: 20.0),
                   ),
-                  SfSlider(
-                    min: 0.0,
-                    max: 180.0,
-                    value: _value2,
-                    interval: 20,
-                    stepSize: 30.0,
-                    showTicks: true,
-                    showLabels: true,
-                    //showTooltip: true,
-                    showDivisors: false,
-                    minorTicksPerInterval: 1,
-                    onChanged: (dynamic value) {
-                      if (isConnected) {
-                        setState(() {
-                          _value2 = value;
-                        });
 
-                        _sendMessage("s2"+_value2.toString());
+                  SliderTheme(data: SliderThemeData(
+                      thumbColor: Colors.green,
+                      thumbShape: RoundSliderThumbShape(enabledThumbRadius: 70)),
+                    child: SfSlider(
 
-                      }
-                    },
+                      min: 0.0,
+                      max: 180.0,
+                      value: _value2,
+                      interval: 20,
+                      stepSize: 30.0,
+                      showTicks: true,
+                      showLabels: true,
+                      //showTooltip: true,
+                      showDivisors: false,
+                      activeColor: Color(0xFF64FFDA),
+                      inactiveColor: Color(0xFFff649f),
+
+                      minorTicksPerInterval: 1,
+                      onChanged: (dynamic value) {
+                        if (isConnected) {
+                          setState(() {
+                            _value2 = value;
+                          });
+
+                          _sendMessage("s2"+_value2.toString());
+
+                        }
+                      },
+                    ),
                   ),
                   Text(
                     'wrist servo2',
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Pacifico-Regular',color: Color(
-                        0xffdb71ec),   fontSize: 20.0),
+                        0xFF008eff),   fontSize: 20.0),
                   ),
-                  SfSlider(
-                    min: 0.0,
-                    max: 180.0,
-                    value: _value3,
-                    interval: 20,
-                    stepSize: 30.0,
-                    showTicks: true,
-                    showLabels: true,
-                    //showTooltip: true,
-                    showDivisors: false,
-                    minorTicksPerInterval: 1,
-                    onChanged: (dynamic value) {
-                      if (isConnected) {
-                        setState(() {
-                          _value3 = value;
-                        });
+                  SliderTheme(data: SliderThemeData(
+                      thumbColor: Colors.green,
+                      thumbShape: RoundSliderThumbShape(enabledThumbRadius: 70)),
+                    child: SfSlider(
+                      min: 0.0,
+                      max: 180.0,
+                      value: _value3,
+                      interval: 20,
+                      stepSize: 30.0,
+                      showTicks: true,
+                      showLabels: true,
+                      //showTooltip: true,
+                      showDivisors: false,
+                      activeColor: Color(0xFF64FFDA),
+                      inactiveColor: Color(0xFFff649f),
+                      minorTicksPerInterval: 1,
+                      onChanged: (dynamic value) {
+                        if (isConnected) {
+                          setState(() {
+                            _value3 = value;
+                          });
 
-                        _sendMessage("s3"+_value3.toString());
+                          _sendMessage("s3"+_value3.toString());
 
-                      }
-                    },
+                        }
+                      },
+                    ),
                   ),
                   Text(
                     ' Base servo',
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Pacifico-Regular',color: Color(
-                        0xffdb71ec),   fontSize: 20.0),
+                        0xFF008eff),   fontSize: 20.0),
                   ),
 
-                  SfSlider(
+                  SliderTheme(data: SliderThemeData(
+                      thumbColor: Colors.green,
+                      thumbShape: RoundSliderThumbShape(enabledThumbRadius: 70)),
+                    child: SfSlider(
 
-                    min: 0.0,
-                    max: 180.0,
-                    value: _value4,
-                    interval: 20,
-                    stepSize: 30.0,
-                    showTicks: true,
-                    showLabels: true,
-                    //showTooltip: true,
-                    showDivisors: false,
-                    minorTicksPerInterval: 1,
-                    onChanged: (dynamic value) {
-                      if (isConnected) {
-                        setState(() {
+                      min: 0.0,
+                      max: 180.0,
+                      value: _value4,
+                      interval: 20,
+                      stepSize: 30.0,
+                      showTicks: true,
+                      showLabels: true,
+                      //showTooltip: true,
+                      showDivisors: false,
+                      activeColor: Color(0xFF64FFDA),
+                      inactiveColor: Color(0xFFff649f),
+                      minorTicksPerInterval: 1,
+                      onChanged: (dynamic value) {
+                        if (isConnected) {
+                          setState(() {
 
-                          _value4 = value;
-                        });
+                            _value4 = value;
+                          });
 
-                        _sendMessage("s4"+_value4.toString());
+                          _sendMessage("s4"+_value4.toString());
 
-                      }
-                    },
+                        }
+                      },
+                    ),
                   ),
                 ],
               ),

@@ -37,8 +37,8 @@ class _DashboardState extends State<Dashboard> {
                       children: <Widget>[
                         IconButton(
                           icon: Icon(Icons.bluetooth,
-                              color:  Color(0xffffffff), size: 70.0),
-                          iconSize: 70,
+                              color:  Color(0xffffffff), size: 50.0),
+                          iconSize: 50,
                           tooltip: "bluetooth",
                           splashColor: Color(0xff69f0ae),
                           onPressed: () {
@@ -48,8 +48,8 @@ class _DashboardState extends State<Dashboard> {
                         ),
                         IconButton(
                           icon: Icon(Icons.settings,
-                              color: Color(0xffffffff), size: 70.0),
-                          iconSize: 70,
+                              color: Color(0xffffffff), size: 50.0),
+                          iconSize: 50,
                           splashColor: Color(0xff69f0ae),
                           tooltip: "settings",
                           onPressed: () { Navigator.of(context).push(MaterialPageRoute(
@@ -64,12 +64,14 @@ class _DashboardState extends State<Dashboard> {
                       "Welcome, Armbotino \nSelect an option",
                       style: TextStyle(
                         fontFamily: 'Pacifico-Regular',
-                        color: Color(0xff243933),
+                        color: Color(0xffffffff),
                         fontSize: 35.0,
                         fontWeight: FontWeight.bold,
                       ),
+
                       textAlign: TextAlign.start,
                     ),
+
                   ),
                   Padding(
                     padding: const EdgeInsets.all(12.0),
