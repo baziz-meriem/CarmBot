@@ -3,6 +3,7 @@ import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:smart_botino/ChatPage.dart';
 import 'package:smart_botino/car.dart';
 import 'package:smart_botino/connection.dart';
+import 'package:smart_botino/home.dart';
 import 'package:smart_botino/main.dart';
 
 import 'manual.dart';
@@ -22,7 +23,7 @@ class _DashboardState extends State<Dashboard> {
             decoration: BoxDecoration(
               image: DecorationImage(
                 image:
-                AssetImage("assets/60ac66ae2cf6843b28687fc143861404.png"),
+                AssetImage("assets/khdma.png"),
                 fit: BoxFit.cover,
               ),
             ),
