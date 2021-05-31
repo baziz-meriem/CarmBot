@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:smart_botino/Dashboard.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
+import 'package:control_pad/control_pad.dart';
 
 
 
@@ -129,11 +130,8 @@ class _ChatPage extends State<ChatPage> {
             //backgroundColor: Colors.purple,
             flexibleSpace: Container(
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Colors.blue[200],Colors.pink[100],Colors.green[200]],
-                  begin: Alignment.bottomRight,
-                  end: Alignment.topLeft,
-                ),
+               color: Colors.deepOrangeAccent,
+
               ),
             ),
             bottom: TabBar(
@@ -165,12 +163,12 @@ class _ChatPage extends State<ChatPage> {
 
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Pacifico-Regular',color: Color(
-                        0xFF008eff),   fontSize: 20.0),
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Pacifico-Regular',color:
+                        Colors.black54,   fontSize: 20.0),
                   ),
 
                   SliderTheme(data: SliderThemeData(
-                      thumbColor: Colors.green,
+                      thumbColor: Colors.blue,
                       thumbShape: RoundSliderThumbShape(enabledThumbRadius: 70)),
                     child: SfSlider(
 
@@ -203,8 +201,7 @@ class _ChatPage extends State<ChatPage> {
                     'wrist servo1',
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Pacifico-Regular',color: Color(
-                        0xFF008eff),   fontSize: 20.0),
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Pacifico-Regular',color: Colors.black54,   fontSize: 20.0),
                   ),
 
                   SliderTheme(data: SliderThemeData(
@@ -241,8 +238,7 @@ class _ChatPage extends State<ChatPage> {
                     'wrist servo2',
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Pacifico-Regular',color: Color(
-                        0xFF008eff),   fontSize: 20.0),
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Pacifico-Regular',color:  Colors.black54,  fontSize: 20.0),
                   ),
                   SliderTheme(data: SliderThemeData(
                       thumbColor: Colors.green,
@@ -276,8 +272,7 @@ class _ChatPage extends State<ChatPage> {
                     ' Base servo',
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Pacifico-Regular',color: Color(
-                        0xFF008eff),   fontSize: 20.0),
+                    style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Pacifico-Regular',color: Colors.black54,   fontSize: 20.0),
                   ),
 
                   SliderTheme(data: SliderThemeData(
