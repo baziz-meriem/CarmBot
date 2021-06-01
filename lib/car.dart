@@ -13,7 +13,11 @@ class car extends StatelessWidget {
         fit: BoxFit.cover,
       ),
     ),
-  child: JoystickView(
+  child: InkWell(
+    child: JoystickView(
+      innerCircleColor:  Color(0xFF64FFDA),
+    ),
+
   ),
 
   ),

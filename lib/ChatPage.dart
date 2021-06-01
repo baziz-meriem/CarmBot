@@ -124,14 +124,17 @@ class _ChatPage extends State<ChatPage> {
 
               IconButton(
                 icon: Icon(Icons.save_alt,size:40),
-                onPressed: () {},
+                onPressed: () {_sendMessage("SAVE");},
               )
             ],
             //backgroundColor: Colors.purple,
             flexibleSpace: Container(
               decoration: BoxDecoration(
-               color: Colors.deepOrangeAccent,
-
+                gradient: LinearGradient(
+                  colors: [Colors.blue[200],Colors.pink[100],Colors.green[200]],
+                  begin: Alignment.bottomRight,
+                  end: Alignment.topLeft,
+                ),
               ),
             ),
             bottom: TabBar(
@@ -140,9 +143,9 @@ class _ChatPage extends State<ChatPage> {
               indicatorWeight: 5,
               tabs: [
 
-                Tab(icon: InkWell(child: Icon(Icons.play_arrow),onTap:(){_sendMessage("RUN"+_value2.toString());},), text: 'RUN'),
-                Tab(icon: InkWell(child: Icon(Icons.pause),onTap:(){_sendMessage("STOP"+_value2.toString());},), text: 'STOP'),
-                Tab(icon: InkWell(child: Icon(Icons.restart_alt),onTap:(){_sendMessage("RESET"+_value2.toString());},), text: 'RESET'),
+                Tab(icon: InkWell(child: Icon(Icons.play_arrow),onTap:(){_sendMessage("RUN");},), text: 'RUN'),
+                Tab(icon: InkWell(child: Icon(Icons.pause),onTap:(){_sendMessage("STOP");},), text: 'STOP'),
+                Tab(icon: InkWell(child: Icon(Icons.restart_alt),onTap:(){_sendMessage("RESET");},), text: 'RESET'),
               ],
             ),
             elevation: 20,
@@ -176,7 +179,7 @@ class _ChatPage extends State<ChatPage> {
                       max: 180.0,
                       value: _value1,
                       interval: 20,
-                      stepSize: 30.0,
+                      stepSize: 10.0,
                       showTicks: true,
                       showLabels: true,
 
@@ -213,7 +216,7 @@ class _ChatPage extends State<ChatPage> {
                       max: 180.0,
                       value: _value2,
                       interval: 20,
-                      stepSize: 30.0,
+                      stepSize: 10.0,
                       showTicks: true,
                       showLabels: true,
                       //showTooltip: true,
@@ -248,7 +251,7 @@ class _ChatPage extends State<ChatPage> {
                       max: 180.0,
                       value: _value3,
                       interval: 20,
-                      stepSize: 30.0,
+                      stepSize: 10.0,
                       showTicks: true,
                       showLabels: true,
                       //showTooltip: true,
@@ -284,10 +287,10 @@ class _ChatPage extends State<ChatPage> {
                       max: 180.0,
                       value: _value4,
                       interval: 20,
-                      stepSize: 30.0,
+                      stepSize: 10.0,
                       showTicks: true,
                       showLabels: true,
-                      //showTooltip: true,
+
                       showDivisors: false,
                       activeColor: Color(0xFF64FFDA),
                       inactiveColor: Color(0xFFff649f),

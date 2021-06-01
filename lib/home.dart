@@ -9,7 +9,7 @@ class home extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
     debugShowCheckedModeBanner: false,
-    title: 'Armbot',
+    title: 'Carmbot',
 theme: ThemeData(
 primarySwatch: Colors.purple,
 visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -47,8 +47,12 @@ class Home extends StatelessWidget {
 
     return SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            title: Text('Connetion'),
+          appBar: AppBar( elevation: 150, centerTitle: true,
+            title: Text('Bluetooth',style: TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Pacifico-Regular',color:  Colors.black54,  fontSize: 35.0),),shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(30),
+              ),
+            ),
           ),
           body: SelectBondedDevicePage(
             onCahtPage: (device1) {

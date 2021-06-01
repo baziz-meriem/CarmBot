@@ -62,10 +62,10 @@ class _DashboardState extends State<Dashboard> {
                   Padding(
                     padding: const EdgeInsets.all(18.0),
                     child: Text(
-                      "Welcome, Armbotino \nSelect an option",
+                      "Welcome, Carmbot \nSelect an option",
                       style: TextStyle(
                         fontFamily: 'Pacifico-Regular',
-                        color: Color(0xffffffff),
+                        color: Color(0xfff6f4f4),
                         fontSize: 35.0,
                         fontWeight: FontWeight.bold,
                       ),
