@@ -114,7 +114,6 @@ class _ChatPage extends State<ChatPage> {
           appBar: AppBar(
             title: Text('Arm Control'),
             centerTitle: true,
-            //centerTitle: true,
             leading: IconButton(
               icon: Icon(Icons.home,size:40,),
               onPressed: () {Navigator.of(context).push(MaterialPageRoute(
@@ -143,7 +142,7 @@ class _ChatPage extends State<ChatPage> {
               indicatorWeight: 5,
               tabs: [
 
-                Tab(icon: InkWell(child: Icon(Icons.play_arrow),onTap:(){_sendMessage("RUN");},), text: 'RUN'),
+                GestureDetector(child: Tab(icon: InkWell(child: Icon(Icons.play_arrow),), text: 'RUN'),onTap:(){setState(){ Colors.red;_sendMessage("RUN");}}),
                 Tab(icon: InkWell(child: Icon(Icons.pause),onTap:(){_sendMessage("STOP");},), text: 'STOP'),
                 Tab(icon: InkWell(child: Icon(Icons.restart_alt),onTap:(){_sendMessage("RESET");},), text: 'RESET'),
               ],
@@ -358,7 +357,6 @@ class _ChatPage extends State<ChatPage> {
       }
     }
 
-    // Create message if there is new line character
     String dataString = String.fromCharCodes(buffer);
     int index = buffer.indexOf(13);
     if (~index != 0) {

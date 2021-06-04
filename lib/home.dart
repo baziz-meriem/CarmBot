@@ -3,8 +3,6 @@ import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:smart_botino/Dashboard.dart';
 import 'package:smart_botino/connection.dart';
 class home extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

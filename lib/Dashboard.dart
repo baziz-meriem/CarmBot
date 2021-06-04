@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:smart_botino/ChatPage.dart';
 import 'package:smart_botino/car.dart';
-import 'package:smart_botino/connection.dart';
 import 'package:smart_botino/home.dart';
-import 'package:smart_botino/main.dart';
-import 'package:control_button/control_button.dart';
+
 import 'manual.dart';
 
 class Dashboard extends StatefulWidget {
@@ -107,7 +105,7 @@ class _DashboardState extends State<Dashboard> {
                                                   bondedDevices) {
                                                     bondedDevices.forEach((element) {
                                                       if (element.address ==
-                                                          "98:D3:31:F4:1A:60") {
+                                                          "3C:6A:A7:9D:EB:70") {
                                                         Navigator.of(context).push(
                                                             MaterialPageRoute(
                                                                 builder: (context) =>
@@ -173,12 +171,23 @@ class _DashboardState extends State<Dashboard> {
                                     children: <Widget>[
                                       Material(
                                           child: InkWell(
-                                            onTap: () {
-                                              var device;
-                                              Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          car()));
+                                            onTap: () async {
+                                              await FlutterBluetoothSerial.instance
+                                                  .getBondedDevices()
+                                                  .then((List<BluetoothDevice>
+                                              bondedDevices) {
+                                                bondedDevices.forEach((element) {
+                                                  if (element.address =="3C:6A:A7:9D:EB:70") {
+                                                    Navigator.of(context).push(
+                                                        MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                car(
+                                                                  server: element,
+                                                                )));
+                                                  }
+                                                });
+                                              });
+
                                             },
                                             child: Container(
                                               child: ClipRRect(
