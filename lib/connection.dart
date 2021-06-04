@@ -51,6 +51,7 @@ class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
     }
 
     // Setup a list of the bonded devices
+    // Setup  list of the bonded devices
     FlutterBluetoothSerial.instance
         .getBondedDevices()
         .then((List<BluetoothDevice> bondedDevices) {
