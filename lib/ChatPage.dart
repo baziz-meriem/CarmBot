@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:smart_botino/Dashboard.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
-import 'package:control_pad/control_pad.dart';
+
 
 
 

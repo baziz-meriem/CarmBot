@@ -5,7 +5,7 @@ import 'package:smart_botino/car.dart';
 import 'package:smart_botino/connection.dart';
 import 'package:smart_botino/home.dart';
 import 'package:smart_botino/main.dart';
-
+import 'package:control_button/control_button.dart';
 import 'manual.dart';
 
 class Dashboard extends StatefulWidget {

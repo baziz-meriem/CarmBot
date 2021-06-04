@@ -8,9 +8,10 @@ class SelectBondedDevicePage extends StatefulWidget {
   /// Then, if they are not avaliable, they would be disabled from the selection.
   final bool checkAvailability;
   final Function onCahtPage;
+  final Function oncar;
 
   const SelectBondedDevicePage(
-      {this.checkAvailability = true, @required this.onCahtPage});
+      {this.checkAvailability = true, @required this.onCahtPage, this.oncar});
 
   @override
   _SelectBondedDevicePage createState() => new _SelectBondedDevicePage();
@@ -116,6 +117,7 @@ class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
         // enabled: _device.availability == _DeviceAvailability.yes,
         onTap: () {
           widget.onCahtPage(_device.device);
+          widget.oncar(_device.device);
         },
       ),
     )
