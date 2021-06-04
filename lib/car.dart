@@ -198,7 +198,20 @@ class _car extends State<car> {
 
 
 
-    void _sendMessage(String text) async {
+    
+@override
+String  onDirectionChanged(double degrees, double distance) {
+  String data = "${degrees.toStringAsFixed(0)}";
+   if(degrees <=300 && degrees >249) data= "backward";
+  if(degrees <=135 && degrees >45) data= "forward";
+  if(degrees <=249 && degrees >135) data= "right";
+  if(degrees <=45 || degrees >300) data= "left";
+  print(data) ;
+  _sendMessage(data);
+  return data ;
+}
+
+void _sendMessage(String text) async {
       text = text.trim();
       textEditingController.clear();
 
@@ -227,15 +240,3 @@ class _car extends State<car> {
       }
     }
   }
-@override
-String  onDirectionChanged(double degrees, double distance) {
-  String data = "${degrees.toStringAsFixed(0)}";
-   if(degrees <=300 && degrees >249) data= "backward";
-  if(degrees <=135 && degrees >45) data= "forward";
-  if(degrees <=249 && degrees >135) data= "right";
-  if(degrees <=45 || degrees >300) data= "left";
-  print(data) ;
-  var a;
-  a._sendMessage(data);
-  return data ;
-}
