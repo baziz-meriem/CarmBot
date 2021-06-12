@@ -7,14 +7,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:smart_botino/Dashboard.dart';
 
-import 'ChatPage.dart';
-class car extends StatefulWidget {
+import 'ArmControl.dart';
+class CarControl extends StatefulWidget {
   final BluetoothDevice server;
 
-  const car({this.server});
+  const CarControl({this.server});
 
   @override
-  _car createState() => new _car();
+  _CarControl createState() => new _CarControl();
 }
 class _Message {
   int whom;
@@ -22,7 +22,7 @@ class _Message {
 
   _Message(this.whom, this.text);
 }
-class _car extends State<car> {
+class _CarControl extends State<CarControl> {
   static final clientID = 0;
   BluetoothConnection connection;
 
@@ -107,37 +107,26 @@ class _car extends State<car> {
 
       Scaffold(
           appBar: AppBar(
-            backgroundColor: Colors.red,
-            title: Text('Car Control',
-
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(fontWeight: FontWeight.bold,
-                  fontFamily: 'Pacifico-Regular',
-                  color:
-                  Colors.black54,
-                  fontSize: 30.0),),
-            centerTitle: true,
             leading: IconButton(
-              icon: Icon(Icons.home, size: 40, color: Colors.black,),
+              icon: Icon(Icons.home, size: 40, color: Colors.white,),
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => Dashboard()));
               },
             ),
-
           ),
           body: Container(decoration: BoxDecoration(
+            // make a background image in the car screen
             image: DecorationImage(
               image:
               AssetImage("assets/backgroundcar.png"),
               fit: BoxFit.cover,
             ),
           ),
-           child: JoystickView(size:200,onDirectionChanged:onDirectionChanged ),
+            child: JoystickView(size:200,onDirectionChanged:onDirectionChanged ),
+            //this joystick for control pad left,right,forward,backward her size 200px,
 
 
-            
 
 
           ) //body:
@@ -198,45 +187,45 @@ class _car extends State<car> {
 
 
 
-    
-@override
-String  onDirectionChanged(double degrees, double distance) {
-  String data = "${degrees.toStringAsFixed(0)}";
-   if(degrees <=300 && degrees >249) data= "backward";
-  if(degrees <=135 && degrees >45) data= "forward";
-  if(degrees <=249 && degrees >135) data= "right";
-  if(degrees <=45 || degrees >300) data= "left";
-  print(data) ;
-  _sendMessage(data);
-  return data ;
-}
 
-void _sendMessage(String text) async {
-      text = text.trim();
-      textEditingController.clear();
+  @override
+  String  onDirectionChanged(double degrees, double distance) {
+    String data = "${degrees.toStringAsFixed(0)}";
+    if(degrees <=300 && degrees >249) data= "backward";
+    if(degrees <=135 && degrees >45) data= "forward";
+    if(degrees <=249 && degrees >135) data= "right";
+    if(degrees <=45 || degrees >300) data= "left";
+    print(data) ;
+    _sendMessage(data);
+    return data ;
+  }
 
-      if (text.length > 0) {
-        try {
-          {
-            connection.output.add(utf8.encode(text + "\r\n"));
-            await connection.output.allSent;
+  void _sendMessage(String text) async {
+    text = text.trim();
+    textEditingController.clear();
 
-            setState(() {
-              messages.add(_Message(clientID, text));
-            });
-          }
+    if (text.length > 0) {
+      try {
+        {
+          connection.output.add(utf8.encode(text + "\r\n"));
+          await connection.output.allSent;
 
-          Future.delayed(Duration(milliseconds: 333)).then((_) {
-            listScrollController.animateTo(
-                listScrollController.position.maxScrollExtent,
-                duration: Duration(milliseconds: 333),
-                curve: Curves.easeOut);
+          setState(() {
+            messages.add(_Message(clientID, text));
           });
         }
-        catch (e) {
-          // Ignore error, but notify state
-          setState(() {});
-        }
+
+        Future.delayed(Duration(milliseconds: 333)).then((_) {
+          listScrollController.animateTo(
+              listScrollController.position.maxScrollExtent,
+              duration: Duration(milliseconds: 333),
+              curve: Curves.easeOut);
+        });
+      }
+      catch (e) {
+        // Ignore error, but notify state
+        setState(() {});
       }
     }
   }
+}

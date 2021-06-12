@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:smart_botino/Dashboard.dart';
 
-class splashscreen extends StatefulWidget {
+class splashscreen extends StatefulWidget { //new class for splashscreen
   const splashscreen({Key key}) : super(key: key);
 
   @override
@@ -12,9 +12,10 @@ class splashscreen extends StatefulWidget {
 class _splashscreenState extends State<splashscreen> {
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 6), () {
+    Future.delayed(Duration(seconds: 6), () { //her duration is 6s
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => Dashboard()));
+      //move it to dashboard screen
     });
     // TODO: implement initState
     super.initState();
@@ -22,7 +23,7 @@ class _splashscreenState extends State<splashscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blue[100],
+        backgroundColor: Colors.yellow,
         body:
            Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -32,6 +33,7 @@ class _splashscreenState extends State<splashscreen> {
             Lottie.asset('assets/animation.json'),
             Text('Carmbot',
               style: TextStyle( fontFamily: 'Pacifico-Regular',
+                color: Colors.blue,
                 fontSize: 34,
                 fontWeight: FontWeight.bold, ),
             ),

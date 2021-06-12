@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:smart_botino/Dashboard.dart';
-import 'package:smart_botino/connection.dart';
+import 'package:smart_botino/Bluetooth_Connection.dart';
 class home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class Home extends StatelessWidget {
             ),
           ),
           body: SelectBondedDevicePage(
-            onCahtPage: (device1) {
+            onArmControl: (device1) {
               BluetoothDevice device = device1;
               Navigator.push(
                 context,

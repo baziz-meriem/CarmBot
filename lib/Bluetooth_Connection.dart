@@ -8,11 +8,11 @@ class SelectBondedDevicePage extends StatefulWidget {
   /// If true, on page start there is performed discovery upon the bonded devices.
   /// Then, if they are not avaliable, they would be disabled from the selection.
   final bool checkAvailability;
-  final Function onCahtPage;
-  final Function oncar;
+  final Function onArmControl;
+  final Function onCarControl;
 
   const SelectBondedDevicePage(
-      {this.checkAvailability = true, @required this.onCahtPage, this.oncar});
+      {this.checkAvailability = true, @required this.onArmControl, this.onCarControl});
 
   @override
   _SelectBondedDevicePage createState() => new _SelectBondedDevicePage();
@@ -118,8 +118,8 @@ class _SelectBondedDevicePage extends State<SelectBondedDevicePage> {
         // rssi: _device.rssi,
         // enabled: _device.availability == _DeviceAvailability.yes,
         onTap: () {
-          widget.onCahtPage(_device.device);
-          widget.oncar(_device.device);
+          widget.onArmControl(_device.device);
+          widget.onCarControl(_device.device);
         },
       ),
     )
