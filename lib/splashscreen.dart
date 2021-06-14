@@ -23,22 +23,31 @@ class _splashscreenState extends State<splashscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.yellow,
-        body:
-           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
 
-            Lottie.asset('assets/animation.json'),
-            Text('Carmbot',
-              style: TextStyle( fontFamily: 'Pacifico-Regular',
-                color: Colors.blue,
-                fontSize: 34,
-                fontWeight: FontWeight.bold, ),
-            ),
+        body:
+           Container(
+             decoration: BoxDecoration(
+               image: DecorationImage(
+                 image: AssetImage("assets/dfb19993bbbabfbd110610e4dc821b65.png"),
+                 fit: BoxFit.cover,
+               ),
+             ),
+             child: Column(
+
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+
+              Lottie.asset('assets/animation.json'),
+              Text('Carmbot',
+                style: TextStyle( fontFamily: 'Pacifico-Regular',
+                  color: Colors.blue,
+                  fontSize: 34,
+                  fontWeight: FontWeight.bold, ),
+              ),
           ],
         ),
+           ),
 
       );
 

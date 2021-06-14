@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:smart_botino/ArmControl.dart';
 import 'package:smart_botino/CarControl.dart';
-import 'package:smart_botino/home.dart';
-
+import 'package:smart_botino/BlueList.dart';
 import 'manual.dart';
 
 class Dashboard extends StatefulWidget {
-
   @override
   _DashboardState createState() => _DashboardState();
 }
@@ -18,222 +16,217 @@ class _DashboardState extends State<Dashboard> {
     return Scaffold(
         backgroundColor: Colors.blue,
         body: Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image:
-                AssetImage("assets/jdid.png"),
-                fit: BoxFit.cover,
-              ),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/dfb19993bbbabfbd110610e4dc821b65.png"),
+              fit: BoxFit.cover,
             ),
-
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          IconButton(
-                            icon: Icon(Icons.bluetooth,
-                                color:  Colors.blue, size: 50.0),
-                            iconSize: 50,
-                            tooltip: "bluetooth",
-                            splashColor: Color(0xff69f0ae),
-                            onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => Home()));
-                            },
-                          ),
-                          IconButton(
-                            icon: Icon(Icons.settings,
-                                color: Colors.blue, size: 50.0),
-                            iconSize: 50,
-                            splashColor: Color(0xff69f0ae),
-                            tooltip: "settings",
-                            onPressed: () { Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => manual()));},
-                          )
-                        ],
+          ),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      IconButton(
+                        icon: Icon(Icons.bluetooth,
+                            color: Colors.blue, size: 50.0),
+                        iconSize: 50,
+                        tooltip: "bluetooth",
+                        splashColor: Color(0xff69f0ae),
+                        onPressed: () {
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => BlueList()));
+                        },
                       ),
+                      IconButton(
+                        icon: Icon(Icons.settings,
+                            color: Colors.blue, size: 50.0),
+                        iconSize: 50,
+                        splashColor: Color(0xff69f0ae),
+                        tooltip: "settings",
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => manual()));
+                        },
+                      )
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: Text(
+                    "Welcome, Carmbot \nSelect an option",
+                    style: TextStyle(
+                      fontFamily: 'Pacifico-Regular',
+                      color: Color(0xfff6f4f4),
+                      fontSize: 35.0,
+                      fontWeight: FontWeight.bold,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(18.0),
-                      child: Text(
-                        "Welcome, Carmbot \nSelect an option",
-                        style: TextStyle(
-                          fontFamily: 'Pacifico-Regular',
-                          color: Color(0xfff6f4f4),
-                          fontSize: 35.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-
-                        textAlign: TextAlign.start,
-                      ),
-
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Center(
-                        child: Wrap(spacing: 20, runSpacing: 20.0, children: <
-                            Widget>[
-                          SizedBox(
-                            width: 200.0,
-                            height: 200.0,
-                            child: InkWell(
-                              child: Container(
-                                decoration: BoxDecoration(),
-                                height: 200,
-                                width: 200,
-                                child: Card(
-                                  shadowColor: Color(0xff14442c),
-                                  color: Color.fromARGB(255, 255, 254, 255),
-                                  elevation: 100.0,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(50.0)),
-                                  child: Center(
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: Column(
-                                          children: <Widget>[
-                                            Material(
-                                                child: InkWell(
-                                                  onTap: () async {
-                                                    await FlutterBluetoothSerial.instance
-                                                        .getBondedDevices()
-                                                        .then((List<BluetoothDevice>
-                                                    bondedDevices) {
-                                                      bondedDevices.forEach((element) {
-                                                        if (element.address ==
-                                                            "98:D3:31:F4:1A:60") {
-                                                          Navigator.of(context).push(
-                                                              MaterialPageRoute(
-                                                                  builder: (context) =>
-                                                                      ArmControl(
-                                                                        server: element,
-                                                                      )));
-                                                        }
-                                                      });
-                                                    });
-                                                  },
-                                                  child: Container(
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                      BorderRadius.circular(20.0),
-                                                      child: Image.asset(
-                                                          'assets/todo.png',
-                                                          width: 150.0,
-                                                          height: 100.0),
-                                                    ),
-                                                  ),
-                                                )),
-                                            SizedBox(
-                                              height: 10.0,
-                                            ),
-                                            Text(
-                                              "Arm Control",
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontFamily: 'Pacifico-Regular',
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 20.0),
-                                            ),
-                                            SizedBox(
-                                              height: 5.0,
-                                            ),
-                                            Text(
-                                              "4 Axis",
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.w100),
-                                            )
-                                          ],
-                                        ),
-                                      )),
-                                ),
-                              ),
-                              onTap: () {},
-                            ),
-                          ),
-                          SizedBox(
-                            width: 200.0,
-                            height: 200.0,
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Center(
+                    child:
+                        Wrap(spacing: 20, runSpacing: 20.0, children: <Widget>[
+                      SizedBox(
+                        width: 200.0,
+                        height: 200.0,
+                        child: InkWell(
+                          child: Container(
+                            decoration: BoxDecoration(),
+                            height: 200,
+                            width: 200,
                             child: Card(
-                              shadowColor: Color(0xff245e42),
-                              color: Color.fromARGB(255, 255, 255, 255),
-                              elevation:100.0,
+                              shadowColor: Color(0xff14442c),
+                              color: Color.fromARGB(255, 255, 254, 255),
+                              elevation: 100.0,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(50.0)),
                               child: Center(
                                   child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Column(
-                                      children: <Widget>[
-                                        Material(
-                                            child: InkWell(
-                                              onTap: () async {
-                                                await FlutterBluetoothSerial.instance
-                                                    .getBondedDevices()
-                                                    .then((List<BluetoothDevice>
+                                padding: const EdgeInsets.all(10.0),
+                                child: Column(
+                                  children: <Widget>[
+                                    Material(
+                                        child: InkWell(
+                                      onTap: () async {
+                                        await FlutterBluetoothSerial.instance
+                                            .getBondedDevices()
+                                            .then((List<BluetoothDevice>
                                                 bondedDevices) {
-                                                  bondedDevices.forEach((element) {
-                                                    if (element.address =="98:D3:31:F4:1A:60") {
-                                                      Navigator.of(context).push(
-                                                          MaterialPageRoute(
-                                                              builder: (context) =>
-                                                                  CarControl(
-                                                                    server: element,
-                                                                  )));
-                                                    }
-                                                  });
-                                                });
-
-                                              },
-                                              child: Container(
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                  BorderRadius.circular(20.0),
-                                                  child: Image.asset('assets/note.png',
-                                                      width: 150.0, height: 100.0),
-                                                ),
-                                              ),
-                                            )),
-                                        SizedBox(
-                                          height: 10.0,
+                                          bondedDevices.forEach((element) {
+                                            if (element.address ==
+                                                "3C:6A:A7:9D:EB:70") {
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          ArmControl(
+                                                            server: element,
+                                                          )));
+                                            }
+                                          });
+                                        });
+                                      },
+                                      child: Container(
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                          child: Image.asset('assets/todo.png',
+                                              width: 150.0, height: 100.0),
                                         ),
-                                        Text(
-                                          "Car control",
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontFamily: 'Pacifico-Regular',
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 20.0),
-                                        ),
-                                        SizedBox(
-                                          height: 5.0,
-                                        ),
-                                        Text(
-                                          "2 motors",
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w100),
-                                        )
-                                      ],
+                                      ),
+                                    )),
+                                    SizedBox(
+                                      height: 10.0,
                                     ),
-                                  )),
+                                    Text(
+                                      "Arm Control",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontFamily: 'Pacifico-Regular',
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20.0),
+                                    ),
+                                    SizedBox(
+                                      height: 5.0,
+                                    ),
+                                    Text(
+                                      "4 Axis",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w100),
+                                    )
+                                  ],
+                                ),
+                              )),
                             ),
                           ),
-                          SizedBox(
-                            width: 160.0,
-                            height: 160.0,
-                          ),
-                        ]),
+                          onTap: () {},
+                        ),
                       ),
-                    )
-                  ],
-                ),
-              ),
-            ));
+                      SizedBox(
+                        width: 200.0,
+                        height: 200.0,
+                        child: Card(
+                          shadowColor: Color(0xff245e42),
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          elevation: 100.0,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50.0)),
+                          child: Center(
+                              child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Column(
+                              children: <Widget>[
+                                Material(
+                                    child: InkWell(
+                                  onTap: () async {
+                                    await FlutterBluetoothSerial.instance
+                                        .getBondedDevices()
+                                        .then((List<BluetoothDevice>
+                                            bondedDevices) {
+                                      bondedDevices.forEach((element) {
+                                        if (element.address ==
+                                            "3C:6A:A7:9D:EB:70") {
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      CarControl(
+                                                        server: element,
+                                                      )));
+                                        }
+                                      });
+                                    });
+                                  },
+                                  child: Container(
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20.0),
+                                      child: Image.asset('assets/note.png',
+                                          width: 150.0, height: 100.0),
+                                    ),
+                                  ),
+                                )),
+                                SizedBox(
+                                  height: 10.0,
+                                ),
+                                Text(
+                                  "Car control",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontFamily: 'Pacifico-Regular',
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20.0),
+                                ),
+                                SizedBox(
+                                  height: 5.0,
+                                ),
+                                Text(
+                                  "2 motors",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w100),
+                                )
+                              ],
+                            ),
+                          )),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 160.0,
+                        height: 160.0,
+                      ),
+                    ]),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ));
   }
 }

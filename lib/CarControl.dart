@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:control_pad/control_pad.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
+
+import 'package:control_pad/control_pad.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:smart_botino/Dashboard.dart';
 
-import 'ArmControl.dart';
 class CarControl extends StatefulWidget {
   final BluetoothDevice server;
 
@@ -16,21 +16,24 @@ class CarControl extends StatefulWidget {
   @override
   _CarControl createState() => new _CarControl();
 }
+
 class _Message {
   int whom;
   String text;
 
   _Message(this.whom, this.text);
 }
+
 class _CarControl extends State<CarControl> {
   static final clientID = 0;
   BluetoothConnection connection;
 
+  // ignore: deprecated_member_use
   List<_Message> messages = List<_Message>();
   String _messageBuffer = '';
 
   final TextEditingController textEditingController =
-  new TextEditingController();
+      new TextEditingController();
   final ScrollController listScrollController = new ScrollController();
 
   bool isConnecting = true;
@@ -87,52 +90,46 @@ class _CarControl extends State<CarControl> {
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     final List<Row> list = messages.map((_message) {
       return Row(
-        children: <Widget>[
-        ],
+        children: <Widget>[],
         mainAxisAlignment: _message.whom == clientID
             ? MainAxisAlignment.end
             : MainAxisAlignment.start,
       );
     }).toList();
 
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:
-
-      Scaffold(
+      home: Scaffold(
           appBar: AppBar(
             leading: IconButton(
-              icon: Icon(Icons.home, size: 40, color: Colors.white,),
+              icon: Icon(
+                Icons.home,
+                size: 40,
+                color: Colors.white,
+              ),
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Dashboard()));
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Dashboard()));
               },
             ),
           ),
-          body: Container(decoration: BoxDecoration(
-            // make a background image in the car screen
-            image: DecorationImage(
-              image:
-              AssetImage("assets/backgroundcar.png"),
-              fit: BoxFit.cover,
+          body: Container(
+            decoration: BoxDecoration(
+              // make a background image in the car screen
+              image: DecorationImage(
+                image: AssetImage("assets/dfb19993bbbabfbd110610e4dc821b65.png"),
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-            child: JoystickView(size:200,onDirectionChanged:onDirectionChanged ),
+            child:
+                JoystickView(size: 200, onDirectionChanged: onDirectionChanged),
             //this joystick for control pad left,right,forward,backward her size 200px,
-
-
-
-
           ) //body:
-      ),
-
-
+          ),
     );
   }
 
@@ -171,7 +168,7 @@ class _CarControl extends State<CarControl> {
             1,
             backspacesCounter > 0
                 ? _messageBuffer.substring(
-                0, _messageBuffer.length - backspacesCounter)
+                    0, _messageBuffer.length - backspacesCounter)
                 : _messageBuffer + dataString.substring(0, index),
           ),
         );
@@ -180,24 +177,22 @@ class _CarControl extends State<CarControl> {
     } else {
       _messageBuffer = (backspacesCounter > 0
           ? _messageBuffer.substring(
-          0, _messageBuffer.length - backspacesCounter)
+              0, _messageBuffer.length - backspacesCounter)
           : _messageBuffer + dataString);
     }
   }
 
-
-
-
   @override
-  String  onDirectionChanged(double degrees, double distance) {
+  String onDirectionChanged(double degrees, double distance) {
     String data = "${degrees.toStringAsFixed(0)}";
-    if(degrees <=300 && degrees >249) data= "backward";
-    if(degrees <=135 && degrees >45) data= "forward";
-    if(degrees <=249 && degrees >135) data= "right";
-    if(degrees <=45 || degrees >300) data= "left";
-    print(data) ;
+    if (degrees <= 300 && degrees > 249) data = "B";
+    if (degrees <= 135 && degrees > 45) data = "F";
+    if (degrees <= 249 && degrees > 135) data = "R";
+    if (degrees <= 45 || degrees > 300) data = "L";
+    if(degrees==0)data ="S";
+    print(data);
     _sendMessage(data);
-    return data ;
+    return data;
   }
 
   void _sendMessage(String text) async {
@@ -221,8 +216,7 @@ class _CarControl extends State<CarControl> {
               duration: Duration(milliseconds: 333),
               curve: Curves.easeOut);
         });
-      }
-      catch (e) {
+      } catch (e) {
         // Ignore error, but notify state
         setState(() {});
       }

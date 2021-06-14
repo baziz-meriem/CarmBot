@@ -33,21 +33,21 @@ class manual extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(18.0),  //make the text in the begining
             //create child to add a text
-            child: Text(
-              "The team 'tecHER' have the honor to build this app with "
-                  "our supervisers 'Mr RAHMOUN & Mr BENSNANE' to control a botino car with arm."
-                  " ",
-              textAlign: TextAlign.center, //text align to fix the text in the center
-              style: TextStyle(
-                fontFamily: 'Regular',
-                //our font is Regular in this screen
+            child: Card(
+              child: Text(
+                "Please feel free to contact us if you have any questions our emails are provided below ",
+                textAlign: TextAlign.center, //text align to fix the text in the center
+                style: TextStyle(
+                  fontFamily: 'IndieFlower-Regular',
+                  //our font is Regular in this screen
 
-                fontSize: 20.0,
-                color :Colors.yellow,
-                fontWeight: FontWeight.bold,
+                  fontSize: 25.0,
+                  color :Color(0xff697bf0),
+                  fontWeight: FontWeight.bold,
+                ),
+
+
               ),
-
-
             ),
 
           ),
@@ -64,7 +64,29 @@ class manual extends StatelessWidget {
                       margin: EdgeInsets.symmetric(vertical: 150.0), //move down 150
                       child: new ClipRRect(
                         borderRadius: new BorderRadius.circular(17.0),
-                        child: new Image(image: new AssetImage("assets/amirameriem.png"),
+                        child: new Image(image: new AssetImage("assets/zineb.jpeg"),
+                          width: 200.0,
+                          height: 600.0,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    new Container(
+                      margin: EdgeInsets.symmetric(vertical: 150.0),
+                      child: new ClipRRect(
+                        borderRadius: new BorderRadius.circular(17.0),
+                        child: new Image(image: new AssetImage("assets/meriemBaziz.jpg"),
+                          width: 200.0,
+                          height: 600.0,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    new Container(
+                      margin: EdgeInsets.symmetric(vertical: 150.0),
+                      child: new ClipRRect(
+                        borderRadius: new BorderRadius.circular(17.0),
+                        child: new Image(image: new AssetImage("assets/manal.png"),
                           width: 200.0,
                           height: 600.0,
                           fit: BoxFit.cover,
@@ -86,7 +108,7 @@ class manual extends StatelessWidget {
                       margin: EdgeInsets.symmetric(vertical: 150.0),
                       child: new ClipRRect(
                         borderRadius: new BorderRadius.circular(17.0),
-                        child: new Image(image: new AssetImage("assets/manal.png"),
+                        child: new Image(image: new AssetImage("assets/amirameriem.png"),
                           width: 200.0,
                           height: 600.0,
                           fit: BoxFit.cover,

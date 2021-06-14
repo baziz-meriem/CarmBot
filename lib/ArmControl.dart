@@ -1,14 +1,12 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:smart_botino/Dashboard.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
-
-
-
 
 class ArmControl extends StatefulWidget {
   final BluetoothDevice server;
@@ -34,10 +32,11 @@ class _ArmControl extends State<ArmControl> {
   String _messageBuffer = '';
 
   final TextEditingController textEditingController =
-  new TextEditingController();
+      new TextEditingController();
   final ScrollController listScrollController = new ScrollController();
 
   bool isConnecting = true;
+
   bool get isConnected => connection != null && connection.isConnected;
 
   bool isDisconnecting = false;
@@ -97,9 +96,7 @@ class _ArmControl extends State<ArmControl> {
   Widget build(BuildContext context) {
     final List<Row> list = messages.map((_message) {
       return Row(
-        children: <Widget>[
-
-        ],
+        children: <Widget>[],
         mainAxisAlignment: _message.whom == clientID
             ? MainAxisAlignment.end
             : MainAxisAlignment.start,
@@ -115,22 +112,28 @@ class _ArmControl extends State<ArmControl> {
               title: Text('Arm Control'),
               centerTitle: true,
               leading: IconButton(
-                icon: Icon(Icons.home,size:40,),
-                onPressed: () {Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Dashboard()));},
+                icon: Icon(
+                  Icons.home,
+                  size: 40,
+                ),
+                onPressed: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => Dashboard()));
+                },
               ),
               actions: [
-
                 IconButton(
-                  icon: Icon(Icons.save_alt,size:40),
-                  onPressed: () {_sendMessage("SAVE");},
+                  icon: Icon(Icons.save_alt, size: 40),
+                  onPressed: () {
+                    _sendMessage("SAVE");
+                  },
                 )
               ],
               //backgroundColor: Colors.purple,
               flexibleSpace: Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Colors.blue[600],Colors.yellowAccent[200]],
+                    colors: [Colors.blue[600], Colors.yellowAccent[200]],
                     begin: Alignment.bottomRight,
                     end: Alignment.topLeft,
                   ),
@@ -141,192 +144,220 @@ class _ArmControl extends State<ArmControl> {
                 indicatorColor: Colors.white,
                 indicatorWeight: 5,
                 tabs: [
-
-                  GestureDetector(child: Tab(icon: InkWell(child: Icon(Icons.play_arrow),), text: 'RUN'),onTap:(){setState(){ Colors.red;_sendMessage("RUN");}}),
-                  Tab(icon: InkWell(child: Icon(Icons.pause),onTap:(){_sendMessage("STOP");},), text: 'STOP'),
-                  Tab(icon: InkWell(child: Icon(Icons.restart_alt),onTap:(){_sendMessage("RESET");},), text: 'RESET'),
+                  Tab(
+                      icon: InkWell(
+                        child: Icon(Icons.play_arrow),
+                        onTap: () {
+                          _sendMessage("RUN");
+                        },
+                      ),
+                      text: 'RUN'),
+                  Tab(
+                      icon: InkWell(
+                        child: Icon(Icons.pause),
+                        onTap: () {
+                          _sendMessage("STOP");
+                        },
+                      ),
+                      text: 'STOP'),
+                  Tab(
+                      icon: InkWell(
+                        child: Icon(Icons.restart_alt),
+                        onTap: () {
+                          _sendMessage("RESET");
+                        },
+                      ),
+                      text: 'RESET'),
                 ],
               ),
               elevation: 20,
               titleSpacing: 20,
-
             ),
-            body:Container(child:Column(
-              children: <Widget>[
-                Container(
-                  margin: const EdgeInsets.only(top: 50),
-                  padding: const EdgeInsets.all(5),
-                  width: double.infinity,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Text(
-                        'Gripper servo',
-
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Pacifico-Regular',color:
-                        Colors.blue,   fontSize: 20.0),
-                      ),
-
-                      SliderTheme(data: SliderThemeData(
-                          thumbColor: Colors.blue,
-                          thumbShape: RoundSliderThumbShape(enabledThumbRadius: 70)),
-                        child: SfSlider(
-
-                          min: 0.0,
-                          max: 180.0,
-                          value: _value1,
-                          interval: 20,
-                          stepSize: 10,
-                          showTicks: true,
-                          showLabels: true,
-                          showDivisors: false,
-                          activeColor: Color(0xFF64FFDA),
-                          inactiveColor: Color(0xFFff649f),
-                          minorTicksPerInterval: 1,
-                          onChanged: (dynamic value) {
-                            if (isConnected) {
-                              setState(() {
-                                _value1 = value;
-                              });
-
-                              _sendMessage("s1"+_value1.toString());
-
-                            }
-                          },
+            body: Container(
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    margin: const EdgeInsets.only(top: 50),
+                    padding: const EdgeInsets.all(5),
+                    width: double.infinity,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          'Gripper servo',
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Pacifico-Regular',
+                              color: Colors.blue,
+                              fontSize: 20.0),
                         ),
-                      ),
-                      Text(
-                        'wrist servo1',
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Pacifico-Regular',color: Colors.blue,   fontSize: 20.0),
-                      ),
+                        SliderTheme(
+                          data: SliderThemeData(
+                              thumbColor: Colors.blue,
+                              thumbShape: RoundSliderThumbShape(
+                                  enabledThumbRadius: 70)),
+                          child: SfSlider(
+                            min: 0.0,
+                            max: 180.0,
+                            value: _value1,
+                            interval: 20,
+                            stepSize: 10,
+                            showTicks: true,
+                            showLabels: true,
+                            showDivisors: false,
+                            activeColor: Color(0xFF64FFDA),
+                            inactiveColor: Color(0xFFff649f),
+                            minorTicksPerInterval: 1,
+                            onChanged: (dynamic value) {
+                              if (isConnected) {
+                                print("is connected");
+                                setState(() {
+                                  value.toInt();
+                                  _value1 = value;
+                                });
 
-                      SliderTheme(data: SliderThemeData(
-                          thumbColor: Colors.green,
-                          thumbShape: RoundSliderThumbShape(enabledThumbRadius: 70)),
-                        child: SfSlider(
-
-                          min: 0.0,
-                          max: 180.0,
-                          value: _value2,
-                          interval: 20,
-                          stepSize: 10.0,
-                          showTicks: true,
-                          showLabels: true,
-                          showDivisors: false,
-                          activeColor: Color(0xFF64FFDA),
-                          inactiveColor: Color(0xFFff649f),
-
-                          minorTicksPerInterval: 1,
-                          onChanged: (dynamic value) {
-                            if (isConnected) {
-                              setState(() {
-                                _value2 = value;
-                              });
-
-                              _sendMessage("s2"+_value2.toString());
-
-                            }
-                          },
+                                _sendMessage("s1" + _value1.toInt().toString());
+                                print(_value1.toInt().toString());
+                              } else
+                                print("is not connected");
+                            },
+                          ),
                         ),
-                      ),
-                      Text(
-                        'wrist servo2',
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Pacifico-Regular',color:  Colors.blue,  fontSize: 20.0),
-                      ),
-                      SliderTheme(data: SliderThemeData(
-                          thumbColor: Colors.green,
-                          thumbShape: RoundSliderThumbShape(enabledThumbRadius: 70)),
-                        child: SfSlider(
-                          min: 0.0,
-                          max: 180.0,
-                          value: _value3,
-                          interval: 20,
-                          stepSize: 10.0,
-                          showTicks: true,
-                          showLabels: true,
-                          //showTooltip: true,
-                          showDivisors: false,
-                          activeColor: Color(0xFF64FFDA),
-                          inactiveColor: Color(0xFFff649f),
-                          minorTicksPerInterval: 1,
-                          onChanged: (dynamic value) {
-                            if (isConnected) {
-                              setState(() {
-                                _value3 = value;
-                              });
-
-                              _sendMessage("s3"+_value3.toString());
-
-                            }
-                          },
+                        Text(
+                          'wrist servo1',
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Pacifico-Regular',
+                              color: Colors.blue,
+                              fontSize: 20.0),
                         ),
-                      ),
-                      Text(
-                        ' Base servo',
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontFamily: 'Pacifico-Regular',color: Colors.blue,   fontSize: 20.0),
-                      ),
+                        SliderTheme(
+                          data: SliderThemeData(
+                              thumbColor: Colors.green,
+                              thumbShape: RoundSliderThumbShape(
+                                  enabledThumbRadius: 70)),
+                          child: SfSlider(
+                            min: 0.0,
+                            max: 180.0,
+                            value: _value2,
+                            interval: 20,
+                            stepSize: 10.0,
+                            showTicks: true,
+                            showLabels: true,
+                            showDivisors: false,
+                            activeColor: Color(0xFF64FFDA),
+                            inactiveColor: Color(0xFFff649f),
+                            minorTicksPerInterval: 1,
+                            onChanged: (dynamic value) {
+                              if (isConnected) {
+                                setState(() {
+                                  _value2 = value;
+                                });
 
-                      SliderTheme(data: SliderThemeData(
-                          thumbColor: Colors.green,
-                          thumbShape: RoundSliderThumbShape(enabledThumbRadius: 70)),
-                        child: SfSlider(
-
-                          min: 0.0,
-                          max: 180.0,
-                          value: _value4,
-                          interval: 20,
-                          stepSize: 10.0,
-                          showTicks: true,
-                          showLabels: true,
-
-                          showDivisors: false,
-                          activeColor: Color(0xFF64FFDA),
-                          inactiveColor: Color(0xFFff649f),
-                          minorTicksPerInterval: 1,
-                          onChanged: (dynamic value) {
-                            if (isConnected) {
-                              setState(() {
-
-                                _value4 = value;
-                              });
-
-                              _sendMessage("s4"+_value4.toString());
-
-                            }
-                          },
+                                _sendMessage("s2" + _value2.toInt().toString());
+                              }
+                            },
+                          ),
                         ),
-                      ),
-                    ],
+                        Text(
+                          'wrist servo2',
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Pacifico-Regular',
+                              color: Colors.blue,
+                              fontSize: 20.0),
+                        ),
+                        SliderTheme(
+                          data: SliderThemeData(
+                              thumbColor: Colors.green,
+                              thumbShape: RoundSliderThumbShape(
+                                  enabledThumbRadius: 70)),
+                          child: SfSlider(
+                            min: 0.0,
+                            max: 180.0,
+                            value: _value3,
+                            interval: 20,
+                            stepSize: 10.0,
+                            showTicks: true,
+                            showLabels: true,
+                            //showTooltip: true,
+                            showDivisors: false,
+                            activeColor: Color(0xFF64FFDA),
+                            inactiveColor: Color(0xFFff649f),
+                            minorTicksPerInterval: 1,
+                            onChanged: (dynamic value) {
+                              if (isConnected) {
+                                setState(() {
+                                  _value3 = value;
+                                });
+
+                                _sendMessage("s3" + _value3.toInt().toString());
+                              }
+                            },
+                          ),
+                        ),
+                        Text(
+                          ' Base servo',
+                          textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Pacifico-Regular',
+                              color: Colors.blue,
+                              fontSize: 20.0),
+                        ),
+                        SliderTheme(
+                          data: SliderThemeData(
+                              thumbColor: Colors.green,
+                              thumbShape: RoundSliderThumbShape(
+                                  enabledThumbRadius: 70)),
+                          child: SfSlider(
+                            min: 0.0,
+                            max: 180.0,
+                            value: _value4,
+                            interval: 20,
+                            stepSize: 10.0,
+                            showTicks: true,
+                            showLabels: true,
+                            showDivisors: false,
+                            activeColor: Color(0xFF64FFDA),
+                            inactiveColor: Color(0xFFff649f),
+                            minorTicksPerInterval: 1,
+                            onChanged: (dynamic value) {
+                              if (isConnected) {
+                                setState(() {
+                                  _value4 = value;
+                                });
+
+                                _sendMessage("s4" + _value4.toInt().toString());
+                              }
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                Flexible(
-                  child: ListView(
-                      padding: const EdgeInsets.all(12.0),
-                      controller: listScrollController,
-                      children: list),
-                ),
-                Row(
-                  children: <Widget>[
-
-
-                  ],
-                )
-              ],
-            ),)  //body:
-        ),
+                  Flexible(
+                    child: ListView(
+                        padding: const EdgeInsets.all(12.0),
+                        controller: listScrollController,
+                        children: list),
+                  ),
+                  Row(
+                    children: <Widget>[],
+                  )
+                ],
+              ),
+            ) //body:
+            ),
       ),
-
-
     );
-
   }
 
   void _onDataReceived(Uint8List data) {
@@ -363,7 +394,7 @@ class _ArmControl extends State<ArmControl> {
             1,
             backspacesCounter > 0
                 ? _messageBuffer.substring(
-                0, _messageBuffer.length - backspacesCounter)
+                    0, _messageBuffer.length - backspacesCounter)
                 : _messageBuffer + dataString.substring(0, index),
           ),
         );
@@ -372,7 +403,7 @@ class _ArmControl extends State<ArmControl> {
     } else {
       _messageBuffer = (backspacesCounter > 0
           ? _messageBuffer.substring(
-          0, _messageBuffer.length - backspacesCounter)
+              0, _messageBuffer.length - backspacesCounter)
           : _messageBuffer + dataString);
     }
   }
@@ -398,8 +429,7 @@ class _ArmControl extends State<ArmControl> {
               duration: Duration(milliseconds: 333),
               curve: Curves.easeOut);
         });
-      }
-      catch (e) {
+      } catch (e) {
         // Ignore error, but notify state
         setState(() {});
       }
