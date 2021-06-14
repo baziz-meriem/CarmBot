@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
-
 import 'package:control_pad/control_pad.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -127,6 +126,7 @@ class _CarControl extends State<CarControl> {
             ),
             child:
                 JoystickView(size: 200, onDirectionChanged: onDirectionChanged),
+
             //this joystick for control pad left,right,forward,backward her size 200px,
           ) //body:
           ),

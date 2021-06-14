@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:smart_botino/ArmControl.dart';
 import 'package:smart_botino/CarControl.dart';
-import 'package:smart_botino/BlueList.dart';
+import 'Bluetooth_Connection.dart';
 import 'manual.dart';
 
 class Dashboard extends StatefulWidget {
@@ -102,7 +102,7 @@ class _DashboardState extends State<Dashboard> {
                                                 bondedDevices) {
                                           bondedDevices.forEach((element) {
                                             if (element.address ==
-                                                "3C:6A:A7:9D:EB:70") {
+                                                "98:D3:31:F4:1A:60") {
                                               Navigator.of(context).push(
                                                   MaterialPageRoute(
                                                       builder: (context) =>
@@ -117,7 +117,7 @@ class _DashboardState extends State<Dashboard> {
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(20.0),
-                                          child: Image.asset('assets/todo.png',
+                                          child: Image.asset('assets/arm.png',
                                               width: 150.0, height: 100.0),
                                         ),
                                       ),
@@ -173,7 +173,7 @@ class _DashboardState extends State<Dashboard> {
                                             bondedDevices) {
                                       bondedDevices.forEach((element) {
                                         if (element.address ==
-                                            "3C:6A:A7:9D:EB:70") {
+                                            "98:D3:31:F4:1A:60") {
                                           Navigator.of(context).push(
                                               MaterialPageRoute(
                                                   builder: (context) =>
@@ -187,7 +187,7 @@ class _DashboardState extends State<Dashboard> {
                                   child: Container(
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(20.0),
-                                      child: Image.asset('assets/note.png',
+                                      child: Image.asset('assets/car.png',
                                           width: 150.0, height: 100.0),
                                     ),
                                   ),
