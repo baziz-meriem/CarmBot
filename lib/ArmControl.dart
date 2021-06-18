@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:typed_data';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
@@ -133,7 +132,7 @@ class _ArmControl extends State<ArmControl> {
               flexibleSpace: Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Colors.blue[600], Colors.yellowAccent[200]],
+                    colors: [Colors.black, Colors.purple[200]],
                     begin: Alignment.bottomRight,
                     end: Alignment.topLeft,
                   ),
@@ -190,7 +189,7 @@ class _ArmControl extends State<ArmControl> {
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Pacifico-Regular',
-                              color: Colors.blue,
+                              color: Colors.black,
                               fontSize: 20.0),
                         ),
                         SliderTheme(
@@ -207,12 +206,13 @@ class _ArmControl extends State<ArmControl> {
                             showTicks: true,
                             showLabels: true,
                             showDivisors: false,
-                            activeColor: Color(0xFF64FFDA),
-                            inactiveColor: Color(0xFFff649f),
+                            activeColor: Colors.black,
+                            inactiveColor: Colors.purple,
                             minorTicksPerInterval: 1,
                             onChanged: (dynamic value) {
                               if (isConnected) {
                                 print("is connected");
+
                                 setState(() {
                                   value.toInt();
                                   _value1 = value;
@@ -225,6 +225,7 @@ class _ArmControl extends State<ArmControl> {
                             },
                           ),
                         ),
+
                         Text(
                           'wrist servo1',
                           textAlign: TextAlign.center,
@@ -232,7 +233,7 @@ class _ArmControl extends State<ArmControl> {
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Pacifico-Regular',
-                              color: Colors.blue,
+                              color: Colors.black,
                               fontSize: 20.0),
                         ),
                         SliderTheme(
@@ -249,8 +250,8 @@ class _ArmControl extends State<ArmControl> {
                             showTicks: true,
                             showLabels: true,
                             showDivisors: false,
-                            activeColor: Color(0xFF64FFDA),
-                            inactiveColor: Color(0xFFff649f),
+                            activeColor: Colors.black,
+                            inactiveColor: Colors.purple,
                             minorTicksPerInterval: 1,
                             onChanged: (dynamic value) {
                               if (isConnected) {
@@ -270,7 +271,7 @@ class _ArmControl extends State<ArmControl> {
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Pacifico-Regular',
-                              color: Colors.blue,
+                              color: Colors.black,
                               fontSize: 20.0),
                         ),
                         SliderTheme(
@@ -288,8 +289,8 @@ class _ArmControl extends State<ArmControl> {
                             showLabels: true,
                             //showTooltip: true,
                             showDivisors: false,
-                            activeColor: Color(0xFF64FFDA),
-                            inactiveColor: Color(0xFFff649f),
+                            activeColor: Colors.black,
+                            inactiveColor: Colors.purple,
                             minorTicksPerInterval: 1,
                             onChanged: (dynamic value) {
                               if (isConnected) {
@@ -309,7 +310,7 @@ class _ArmControl extends State<ArmControl> {
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontFamily: 'Pacifico-Regular',
-                              color: Colors.blue,
+                              color: Colors.black,
                               fontSize: 20.0),
                         ),
                         SliderTheme(
@@ -326,8 +327,8 @@ class _ArmControl extends State<ArmControl> {
                             showTicks: true,
                             showLabels: true,
                             showDivisors: false,
-                            activeColor: Color(0xFF64FFDA),
-                            inactiveColor: Color(0xFFff649f),
+                            activeColor: Colors.black,
+                            inactiveColor: Colors.purple,
                             minorTicksPerInterval: 1,
                             onChanged: (dynamic value) {
                               if (isConnected) {
@@ -359,7 +360,6 @@ class _ArmControl extends State<ArmControl> {
       ),
     );
   }
-
   void _onDataReceived(Uint8List data) {
     // Allocate buffer for parsed data
     int backspacesCounter = 0;
@@ -435,4 +435,7 @@ class _ArmControl extends State<ArmControl> {
       }
     }
   }
+
 }
+
+

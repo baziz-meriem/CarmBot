@@ -26,7 +26,7 @@ class splashscreen extends StatefulWidget { //new class for splashscreen
 class _splashscreenState extends State<splashscreen> {
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 10), () { //her duration is 6s
+    Future.delayed(Duration(seconds:8), () { //her duration is 6s
       Navigator.pushReplacement(
           context, MaterialPageRoute(builder: (context) => Dashboard()));
       //move it to dashboard screen
@@ -37,21 +37,21 @@ class _splashscreenState extends State<splashscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      backgroundColor: Colors.black,
         body:
            SingleChildScrollView(
              child: Container(
-
+               margin: EdgeInsets.all(10.0),
                child: Column(
 
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
 
-                Lottie.asset('assets/44840-robot.json'),
+                Lottie.asset('assets/animation.json'),
                 Text('Carmbot',
                   style: TextStyle( fontFamily: 'Pacifico-Regular',
-                    color: Colors.black,
+                    color: Colors.purple,
                     fontSize: 45,
                     fontWeight: FontWeight.bold, ),
                 ),

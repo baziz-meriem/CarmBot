@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.smart_botino">
     <application
-        android:label="Smartbot"
+        android:label="carmbot"
         >
         <activity
             android:icon="@mipmap/ic_launcher"

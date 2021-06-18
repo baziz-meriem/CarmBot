@@ -11,7 +11,7 @@ class manual extends StatelessWidget {
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.yellowAccent[200],Colors.blue[600]],
+              colors: [Colors.black,Colors.purple[200]],
               //appbar with linearColor
               begin: Alignment.bottomRight,  //from the right to the left
               end: Alignment.topLeft,
@@ -33,7 +33,7 @@ class manual extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(18.0),  //make the text in the begining
             //create child to add a text
-            child: Card(
+
               child: Text(
                 "Please feel free to contact us if you have any questions our emails are provided below ",
                 textAlign: TextAlign.center, //text align to fix the text in the center
@@ -41,8 +41,8 @@ class manual extends StatelessWidget {
                   fontFamily: 'Pacifico-Regular',
                   //our font is Regular in this screen
 
-                  fontSize: 25.0,
-                  color :Color(0xff697bf0),
+                  fontSize: 22.0,
+                  color :Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
 
@@ -50,22 +50,32 @@ class manual extends StatelessWidget {
               ),
             ),
 
-          ),
+
           new ListView(  //listview to create a horizontal scroling of images
             children: <Widget>[
               new Container(  //in the list view create a container to make all the images there
-                height: 600.0,
+                height: 550.0,
                 margin: EdgeInsets.all(10.0),
 
                 child: new ListView(
                   scrollDirection: Axis.horizontal,
                   children: <Widget>[
-
                     new Container(
                       margin: EdgeInsets.symmetric(vertical: 150.0),
                       child: new ClipRRect(
                         borderRadius: new BorderRadius.circular(17.0),
-                        child: new Image(image: new AssetImage("assets/manal.png"),
+                        child: new Image(image: new AssetImage("assets/amirameriem.png"),
+                          width: 200.0,
+                          height: 600.0,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    new Container(
+                      margin: EdgeInsets.symmetric(vertical: 150.0),
+                      child: new ClipRRect(
+                        borderRadius: new BorderRadius.circular(17.0),
+                        child: new Image(image: new AssetImage("assets/baziz.png"),
                           width: 200.0,
                           height: 600.0,
                           fit: BoxFit.cover,
@@ -87,7 +97,7 @@ class manual extends StatelessWidget {
                       margin: EdgeInsets.symmetric(vertical: 150.0),
                       child: new ClipRRect(
                         borderRadius: new BorderRadius.circular(17.0),
-                        child: new Image(image: new AssetImage("assets/amirameriem.png"),
+                        child: new Image(image: new AssetImage("assets/manal.png"),
                           width: 200.0,
                           height: 600.0,
                           fit: BoxFit.cover,
@@ -99,6 +109,17 @@ class manual extends StatelessWidget {
                       child: new ClipRRect(
                         borderRadius: new BorderRadius.circular(17.0),
                         child: new Image(image: new AssetImage("assets/naila.png"),
+                          width: 200.0,
+                          height: 600.0,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    new Container(
+                      margin: EdgeInsets.symmetric(vertical: 150.0),
+                      child: new ClipRRect(
+                        borderRadius: new BorderRadius.circular(17.0),
+                        child: new Image(image: new AssetImage("assets/zineb.png"),
                           width: 200.0,
                           height: 600.0,
                           fit: BoxFit.cover,

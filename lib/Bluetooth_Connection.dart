@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
-
 import 'Dashboard.dart';
 
 class BlueList extends StatelessWidget {
@@ -9,17 +8,26 @@ class BlueList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            elevation: 150,
-            centerTitle: true,
-            title: Text(
-              'Bluetooth',
-              style: TextStyle(
+            appBar: new AppBar (
+              elevation: 150,
+              centerTitle: true,
+              title:  Text("Bluetooth",
+             style:  TextStyle(
                   fontWeight: FontWeight.bold,
                   fontFamily: 'Pacifico-Regular',
-                  color: Colors.black54,
+                  color: Colors.white,
                   fontSize: 35.0),
             ),
+              flexibleSpace: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.black,Colors.purple[200]],
+                    //appbar with linearColor
+                    begin: Alignment.bottomRight,  //from the right to the left
+                    end: Alignment.topLeft,
+                  ),
+                ),
+              ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
                 bottom: Radius.circular(30),
@@ -60,7 +68,8 @@ class BluetoothDeviceListEntry extends StatelessWidget {/*.immutable.*/
         // ignore: deprecated_member_use
         trailing: RaisedButton(
           onPressed: () {},
-          color: Color(0xff64FFDA),
+
+          color: Colors.purple,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(70)),
           child: Text("Connect",style: TextStyle(
@@ -69,11 +78,12 @@ class BluetoothDeviceListEntry extends StatelessWidget {/*.immutable.*/
               fontWeight: FontWeight.normal,
               fontSize: 20.0),
           ),),
-      ),
+         
+    ),
     );
-
   }
 }
+
 
 /*.................widget part........*/
 class SelectBondedDevicePage extends StatefulWidget {/* has a changing state*/

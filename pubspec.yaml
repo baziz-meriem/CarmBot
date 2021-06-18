@@ -34,9 +34,24 @@ dependencies:
   syncfusion_flutter_sliders: ^18.3.47-beta
   lottie: ^1.0.1
   control_pad: ^1.1.1+1
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_rename_app: ^1.0.0
+flutter_rename_app:
+  application_name: carmbot
+  dart_package_name: smart_botino
+  application_id: fr.example.smart_botino
+  bundle_id: fr.example.smart_botino
+  flutter_launcher_icons: ^0.8.0
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/logo carmbot.jpg"
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

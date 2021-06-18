@@ -6,7 +6,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:smart_botino/Dashboard.dart';
-
 class CarControl extends StatefulWidget {
   final BluetoothDevice server;
 
@@ -32,7 +31,7 @@ class _CarControl extends State<CarControl> {
   String _messageBuffer = '';
 
   final TextEditingController textEditingController =
-      new TextEditingController();
+  new TextEditingController();
   final ScrollController listScrollController = new ScrollController();
 
   bool isConnecting = true;
@@ -103,7 +102,19 @@ class _CarControl extends State<CarControl> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          appBar: AppBar(
+
+            appBar: new AppBar (
+              title: new Text("about us"),
+              flexibleSpace: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.black,Colors.purple[200]],
+                    //appbar with linearColor
+                    begin: Alignment.bottomRight,  //from the right to the left
+                    end: Alignment.topLeft,
+                  ),
+                ),
+              ),
             leading: IconButton(
               icon: Icon(
                 Icons.home,
@@ -120,16 +131,16 @@ class _CarControl extends State<CarControl> {
             decoration: BoxDecoration(
               // make a background image in the car screen
               image: DecorationImage(
-                image: AssetImage("assets/dfb19993bbbabfbd110610e4dc821b65.png"),
+                image: AssetImage("assets/backgroundcar.png"),
                 fit: BoxFit.cover,
               ),
             ),
             child:
-                JoystickView(size: 200, onDirectionChanged: onDirectionChanged),
+            JoystickView(size: 200, onDirectionChanged: onDirectionChanged),
 
             //this joystick for control pad left,right,forward,backward her size 200px,
           ) //body:
-          ),
+      ),
     );
   }
 
@@ -168,7 +179,7 @@ class _CarControl extends State<CarControl> {
             1,
             backspacesCounter > 0
                 ? _messageBuffer.substring(
-                    0, _messageBuffer.length - backspacesCounter)
+                0, _messageBuffer.length - backspacesCounter)
                 : _messageBuffer + dataString.substring(0, index),
           ),
         );
@@ -177,13 +188,13 @@ class _CarControl extends State<CarControl> {
     } else {
       _messageBuffer = (backspacesCounter > 0
           ? _messageBuffer.substring(
-              0, _messageBuffer.length - backspacesCounter)
+          0, _messageBuffer.length - backspacesCounter)
           : _messageBuffer + dataString);
     }
   }
 
   @override
-  String onDirectionChanged(double degrees, double distance) {
+  void onDirectionChanged(double degrees, double distance) {
     String data = "${degrees.toStringAsFixed(0)}";
     if (degrees <= 300 && degrees > 249) data = "B";
     if (degrees <= 135 && degrees > 45) data = "F";
@@ -192,7 +203,7 @@ class _CarControl extends State<CarControl> {
     if(degrees==0)data ="S";
     print(data);
     _sendMessage(data);
-    return data;
+
   }
 
   void _sendMessage(String text) async {
