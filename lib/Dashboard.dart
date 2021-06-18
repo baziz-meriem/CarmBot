@@ -46,7 +46,7 @@ class _DashboardState extends State<Dashboard> {
                         icon: Icon(Icons.settings,
                             color: Colors.black, size: 50.0),
                         iconSize: 50,
-                        splashColor: Color(0xff69f0ae),
+                        splashColor: Colors.black,
                         tooltip: "settings",
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
