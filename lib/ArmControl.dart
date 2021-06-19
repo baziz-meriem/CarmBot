@@ -45,11 +45,12 @@ class _ArmControl extends State<ArmControl> {
     super.initState();
 
     BluetoothConnection.toAddress(widget.server.address).then((_connection) {
-      print('Connected to the device');
+
       connection = _connection;
       setState(() {
         isConnecting = false;
         isDisconnecting = false;
+        return'Connected to the device';
       });
 
       connection.input.listen(_onDataReceived).onDone(() {
@@ -211,7 +212,7 @@ class _ArmControl extends State<ArmControl> {
                             minorTicksPerInterval: 1,
                             onChanged: (dynamic value) {
                               if (isConnected) {
-                                print("is connected");
+                             print('is connected');
 
                                 setState(() {
                                   value.toInt();
@@ -220,6 +221,7 @@ class _ArmControl extends State<ArmControl> {
 
                                 _sendMessage("s1" + _value1.toInt().toString());
                                 print(_value1.toInt().toString());
+
                               } else
                                 print("is not connected");
                             },

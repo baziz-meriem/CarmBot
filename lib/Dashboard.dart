@@ -105,8 +105,6 @@ class _DashboardState extends State<Dashboard> {
                                                       element) {
                                                     if (element.address ==
                                                         "98:D3:31:F4:1A:60") {
-                                                      print('device is connected');
-
                                                       Navigator.of(context)
                                                           .push(
                                                           MaterialPageRoute(
@@ -115,6 +113,7 @@ class _DashboardState extends State<Dashboard> {
                                                                   ArmControl(
                                                                     server: element,
                                                                   )));
+                                                      return "device is connected";
                                                     }
                                                   });
                                                 });
@@ -183,19 +182,19 @@ class _DashboardState extends State<Dashboard> {
                                               bondedDevices.forEach((element) {
                                                 if (element.address ==
                                                     "98:D3:31:F4:1A:60") {
-                                                  showAlertDialog(context)
-                                                ;
-                                                Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                builder: (context) =>
-                                                CarControl(
-                                                server:
-                                                element
-                                                ,
-                                                )
-                                                )
-                                                );
-                                              }
+                                                  ;
+                                                  Navigator.of(context).push(
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              CarControl(
+                                                                server:
+                                                                element
+                                                                ,
+                                                              )
+                                                      )
+                                                  );
+                                                  return "is connected";
+                                                }
                                               });
                                             });
                                           },
@@ -246,19 +245,4 @@ class _DashboardState extends State<Dashboard> {
           ),
         ));
   }
-
-
-  void showAlertDialog(BuildContext context) =>
-      showDialog(
-        builder: (context) => AlertDialog(
-          title: Text('connection succes'),
-          actions: [
-            OutlineButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: Text('Close'),
-            )
-          ],
-        ), context: context,
-      );
 }
-
