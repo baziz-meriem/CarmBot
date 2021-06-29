@@ -67,7 +67,8 @@ class BluetoothDeviceListEntry extends StatelessWidget {/*.immutable.*/
         subtitle: Text(HC05.address.toString()),
         // ignore: deprecated_member_use
         trailing: RaisedButton(
-          onPressed: () {},
+          onPressed: () {showSimpleDialog1(context);
+          },
 
           color: Colors.purple,
           shape: RoundedRectangleBorder(
@@ -83,6 +84,45 @@ class BluetoothDeviceListEntry extends StatelessWidget {/*.immutable.*/
     );
   }
 }
+
+void showSimpleDialog1(BuildContext context) => showDialog(
+  builder: (context) => SimpleDialog(
+      title: const Text('Connection succes',style: TextStyle(fontSize: 20,)),
+      children: <Widget>[
+  SimpleDialogOption(
+    child: Text('close',
+         textAlign: TextAlign.right, style: TextStyle(fontSize: 16,color :Colors.green,)),
+
+  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3, ),
+  onPressed: () {
+    Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) =>
+            BlueList()));
+
+  },
+),
+],
+), context: context,
+);
+
+void showSimpleDialog(BuildContext context) => showDialog(
+  builder: (context) => SimpleDialog(
+    title: const Text('Connection lost',style: TextStyle(fontSize: 20,)),
+    children: <Widget>[
+      SimpleDialogOption(
+        child: Text('refrech',textAlign: TextAlign.right, style: TextStyle(fontSize: 16,color :Colors.red,)),
+
+        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3, ),
+        onPressed: () {
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) =>
+                  BlueList()));
+
+        },
+      ),
+    ],
+  ), context: context,
+);
 
 
 /*.................widget part........*/

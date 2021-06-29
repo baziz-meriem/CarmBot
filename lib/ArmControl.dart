@@ -7,6 +7,8 @@ import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:smart_botino/Dashboard.dart';
 import 'package:syncfusion_flutter_sliders/sliders.dart';
 
+import 'Bluetooth_Connection.dart';
+
 class ArmControl extends StatefulWidget {
   final BluetoothDevice server;
 
@@ -223,7 +225,7 @@ class _ArmControl extends State<ArmControl> {
                                 print(_value1.toInt().toString());
 
                               } else
-                                print("is not connected");
+                                showSimpleDialog(context);
                             },
                           ),
                         ),
@@ -257,12 +259,15 @@ class _ArmControl extends State<ArmControl> {
                             minorTicksPerInterval: 1,
                             onChanged: (dynamic value) {
                               if (isConnected) {
+
                                 setState(() {
                                   _value2 = value;
                                 });
 
                                 _sendMessage("s2" + _value2.toInt().toString());
-                              }
+                              }else
+                                showSimpleDialog(context);
+
                             },
                           ),
                         ),
@@ -302,6 +307,8 @@ class _ArmControl extends State<ArmControl> {
 
                                 _sendMessage("s3" + _value3.toInt().toString());
                               }
+                              else
+                                showSimpleDialog(context);
                             },
                           ),
                         ),
@@ -340,6 +347,8 @@ class _ArmControl extends State<ArmControl> {
 
                                 _sendMessage("s4" + _value4.toInt().toString());
                               }
+                              else
+                                showSimpleDialog(context);
                             },
                           ),
                         ),

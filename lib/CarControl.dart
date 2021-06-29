@@ -6,6 +6,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 import 'package:smart_botino/Dashboard.dart';
+
+import 'Bluetooth_Connection.dart';
 class CarControl extends StatefulWidget {
   final BluetoothDevice server;
 
@@ -136,7 +138,11 @@ class _CarControl extends State<CarControl> {
               ),
             ),
             child:
-            JoystickView(size: 200, onDirectionChanged: onDirectionChanged),
+            InkWell(child: JoystickView(size: 200, onDirectionChanged: onDirectionChanged),onTap: (){if (isConnected){
+              }
+              else {  showSimpleDialog(context);
+            print('rahi tmchi');}
+              },),
 
             //this joystick for control pad left,right,forward,backward her size 200px,
           ) //body:
