@@ -23,7 +23,7 @@ class BlueList extends StatelessWidget {
                   gradient: LinearGradient(
                     colors: [Colors.black,Colors.purple[200]],
                     //appbar with linearColor
-                    begin: Alignment.bottomRight,  //from the right to the left
+                    begin:   Alignment.bottomRight,  //from the right to the left
                     end: Alignment.topLeft,
                   ),
                 ),
